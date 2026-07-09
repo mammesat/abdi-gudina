@@ -51,7 +51,7 @@ function ArticlePage() {
           <h1 className="text-balance text-4xl font-extrabold leading-tight lg:text-5xl">{article.title}</h1>
           <p className="mt-6 text-xl text-foreground/70">{article.excerpt}</p>
           <div className="mt-12 space-y-6 text-lg leading-relaxed text-foreground/80">
-            {article.body.map((p, i) => <p key={i}>{p}</p>)}
+            {article.body.map((p: string, i: number) => <p key={i}>{p}</p>)}
           </div>
           <div className="mt-16 flex gap-3 border-t border-border pt-8">
             <span className="font-mono text-xs uppercase tracking-widest text-foreground/50">Share:</span>
