@@ -9,38 +9,476 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TransparencyRouteImport } from './routes/transparency'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SaccosRouteImport } from './routes/saccos'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TransparencyIndexRouteImport } from './routes/transparency.index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as SaccosIndexRouteImport } from './routes/saccos.index'
+import { Route as ResourcesIndexRouteImport } from './routes/resources.index'
+import { Route as NewsIndexRouteImport } from './routes/news.index'
+import { Route as ImpactIndexRouteImport } from './routes/impact.index'
+import { Route as AboutIndexRouteImport } from './routes/about.index'
+import { Route as TransparencyReportsRouteImport } from './routes/transparency.reports'
+import { Route as ServicesTrainingRouteImport } from './routes/services.training'
+import { Route as ServicesSavingsRouteImport } from './routes/services.savings'
+import { Route as ServicesLoansRouteImport } from './routes/services.loans'
+import { Route as ServicesInvestmentsRouteImport } from './routes/services.investments'
+import { Route as ServicesInsuranceRouteImport } from './routes/services.insurance'
+import { Route as SaccosJoinRouteImport } from './routes/saccos.join'
+import { Route as SaccosBenefitsRouteImport } from './routes/saccos.benefits'
+import { Route as ResourcesPublicationsRouteImport } from './routes/resources.publications'
+import { Route as NewsGalleryRouteImport } from './routes/news.gallery'
+import { Route as NewsEventsRouteImport } from './routes/news.events'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as ImpactStatsRouteImport } from './routes/impact.stats'
+import { Route as AboutVisionRouteImport } from './routes/about.vision'
+import { Route as AboutStructureRouteImport } from './routes/about.structure'
+import { Route as AboutHistoryRouteImport } from './routes/about.history'
+import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 
+const TransparencyRoute = TransparencyRouteImport.update({
+  id: '/transparency',
+  path: '/transparency',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SaccosRoute = SaccosRouteImport.update({
+  id: '/saccos',
+  path: '/saccos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TransparencyIndexRoute = TransparencyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TransparencyRoute,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const SaccosIndexRoute = SaccosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SaccosRoute,
+} as any)
+const ResourcesIndexRoute = ResourcesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => NewsRoute,
+} as any)
+const ImpactIndexRoute = ImpactIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ImpactRoute,
+} as any)
+const AboutIndexRoute = AboutIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AboutRoute,
+} as any)
+const TransparencyReportsRoute = TransparencyReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => TransparencyRoute,
+} as any)
+const ServicesTrainingRoute = ServicesTrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSavingsRoute = ServicesSavingsRouteImport.update({
+  id: '/savings',
+  path: '/savings',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesLoansRoute = ServicesLoansRouteImport.update({
+  id: '/loans',
+  path: '/loans',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesInvestmentsRoute = ServicesInvestmentsRouteImport.update({
+  id: '/investments',
+  path: '/investments',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesInsuranceRoute = ServicesInsuranceRouteImport.update({
+  id: '/insurance',
+  path: '/insurance',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const SaccosJoinRoute = SaccosJoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => SaccosRoute,
+} as any)
+const SaccosBenefitsRoute = SaccosBenefitsRouteImport.update({
+  id: '/benefits',
+  path: '/benefits',
+  getParentRoute: () => SaccosRoute,
+} as any)
+const ResourcesPublicationsRoute = ResourcesPublicationsRouteImport.update({
+  id: '/publications',
+  path: '/publications',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+const NewsGalleryRoute = NewsGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => NewsRoute,
+} as any)
+const NewsEventsRoute = NewsEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => NewsRoute,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
+} as any)
+const ImpactStatsRoute = ImpactStatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
+  getParentRoute: () => ImpactRoute,
+} as any)
+const AboutVisionRoute = AboutVisionRouteImport.update({
+  id: '/vision',
+  path: '/vision',
+  getParentRoute: () => AboutRoute,
+} as any)
+const AboutStructureRoute = AboutStructureRouteImport.update({
+  id: '/structure',
+  path: '/structure',
+  getParentRoute: () => AboutRoute,
+} as any)
+const AboutHistoryRoute = AboutHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AboutRoute,
+} as any)
+const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => AboutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/impact': typeof ImpactRouteWithChildren
+  '/news': typeof NewsRouteWithChildren
+  '/resources': typeof ResourcesRouteWithChildren
+  '/saccos': typeof SaccosRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/transparency': typeof TransparencyRouteWithChildren
+  '/about/governance': typeof AboutGovernanceRoute
+  '/about/history': typeof AboutHistoryRoute
+  '/about/structure': typeof AboutStructureRoute
+  '/about/vision': typeof AboutVisionRoute
+  '/impact/stats': typeof ImpactStatsRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/events': typeof NewsEventsRoute
+  '/news/gallery': typeof NewsGalleryRoute
+  '/resources/publications': typeof ResourcesPublicationsRoute
+  '/saccos/benefits': typeof SaccosBenefitsRoute
+  '/saccos/join': typeof SaccosJoinRoute
+  '/services/insurance': typeof ServicesInsuranceRoute
+  '/services/investments': typeof ServicesInvestmentsRoute
+  '/services/loans': typeof ServicesLoansRoute
+  '/services/savings': typeof ServicesSavingsRoute
+  '/services/training': typeof ServicesTrainingRoute
+  '/transparency/reports': typeof TransparencyReportsRoute
+  '/about/': typeof AboutIndexRoute
+  '/impact/': typeof ImpactIndexRoute
+  '/news/': typeof NewsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
+  '/saccos/': typeof SaccosIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/transparency/': typeof TransparencyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/about/governance': typeof AboutGovernanceRoute
+  '/about/history': typeof AboutHistoryRoute
+  '/about/structure': typeof AboutStructureRoute
+  '/about/vision': typeof AboutVisionRoute
+  '/impact/stats': typeof ImpactStatsRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/events': typeof NewsEventsRoute
+  '/news/gallery': typeof NewsGalleryRoute
+  '/resources/publications': typeof ResourcesPublicationsRoute
+  '/saccos/benefits': typeof SaccosBenefitsRoute
+  '/saccos/join': typeof SaccosJoinRoute
+  '/services/insurance': typeof ServicesInsuranceRoute
+  '/services/investments': typeof ServicesInvestmentsRoute
+  '/services/loans': typeof ServicesLoansRoute
+  '/services/savings': typeof ServicesSavingsRoute
+  '/services/training': typeof ServicesTrainingRoute
+  '/transparency/reports': typeof TransparencyReportsRoute
+  '/about': typeof AboutIndexRoute
+  '/impact': typeof ImpactIndexRoute
+  '/news': typeof NewsIndexRoute
+  '/resources': typeof ResourcesIndexRoute
+  '/saccos': typeof SaccosIndexRoute
+  '/services': typeof ServicesIndexRoute
+  '/transparency': typeof TransparencyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/impact': typeof ImpactRouteWithChildren
+  '/news': typeof NewsRouteWithChildren
+  '/resources': typeof ResourcesRouteWithChildren
+  '/saccos': typeof SaccosRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/transparency': typeof TransparencyRouteWithChildren
+  '/about/governance': typeof AboutGovernanceRoute
+  '/about/history': typeof AboutHistoryRoute
+  '/about/structure': typeof AboutStructureRoute
+  '/about/vision': typeof AboutVisionRoute
+  '/impact/stats': typeof ImpactStatsRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/events': typeof NewsEventsRoute
+  '/news/gallery': typeof NewsGalleryRoute
+  '/resources/publications': typeof ResourcesPublicationsRoute
+  '/saccos/benefits': typeof SaccosBenefitsRoute
+  '/saccos/join': typeof SaccosJoinRoute
+  '/services/insurance': typeof ServicesInsuranceRoute
+  '/services/investments': typeof ServicesInvestmentsRoute
+  '/services/loans': typeof ServicesLoansRoute
+  '/services/savings': typeof ServicesSavingsRoute
+  '/services/training': typeof ServicesTrainingRoute
+  '/transparency/reports': typeof TransparencyReportsRoute
+  '/about/': typeof AboutIndexRoute
+  '/impact/': typeof ImpactIndexRoute
+  '/news/': typeof NewsIndexRoute
+  '/resources/': typeof ResourcesIndexRoute
+  '/saccos/': typeof SaccosIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/transparency/': typeof TransparencyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/impact'
+    | '/news'
+    | '/resources'
+    | '/saccos'
+    | '/services'
+    | '/transparency'
+    | '/about/governance'
+    | '/about/history'
+    | '/about/structure'
+    | '/about/vision'
+    | '/impact/stats'
+    | '/news/$slug'
+    | '/news/events'
+    | '/news/gallery'
+    | '/resources/publications'
+    | '/saccos/benefits'
+    | '/saccos/join'
+    | '/services/insurance'
+    | '/services/investments'
+    | '/services/loans'
+    | '/services/savings'
+    | '/services/training'
+    | '/transparency/reports'
+    | '/about/'
+    | '/impact/'
+    | '/news/'
+    | '/resources/'
+    | '/saccos/'
+    | '/services/'
+    | '/transparency/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/about/governance'
+    | '/about/history'
+    | '/about/structure'
+    | '/about/vision'
+    | '/impact/stats'
+    | '/news/$slug'
+    | '/news/events'
+    | '/news/gallery'
+    | '/resources/publications'
+    | '/saccos/benefits'
+    | '/saccos/join'
+    | '/services/insurance'
+    | '/services/investments'
+    | '/services/loans'
+    | '/services/savings'
+    | '/services/training'
+    | '/transparency/reports'
+    | '/about'
+    | '/impact'
+    | '/news'
+    | '/resources'
+    | '/saccos'
+    | '/services'
+    | '/transparency'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/impact'
+    | '/news'
+    | '/resources'
+    | '/saccos'
+    | '/services'
+    | '/transparency'
+    | '/about/governance'
+    | '/about/history'
+    | '/about/structure'
+    | '/about/vision'
+    | '/impact/stats'
+    | '/news/$slug'
+    | '/news/events'
+    | '/news/gallery'
+    | '/resources/publications'
+    | '/saccos/benefits'
+    | '/saccos/join'
+    | '/services/insurance'
+    | '/services/investments'
+    | '/services/loans'
+    | '/services/savings'
+    | '/services/training'
+    | '/transparency/reports'
+    | '/about/'
+    | '/impact/'
+    | '/news/'
+    | '/resources/'
+    | '/saccos/'
+    | '/services/'
+    | '/transparency/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  ImpactRoute: typeof ImpactRouteWithChildren
+  NewsRoute: typeof NewsRouteWithChildren
+  ResourcesRoute: typeof ResourcesRouteWithChildren
+  SaccosRoute: typeof SaccosRouteWithChildren
+  ServicesRoute: typeof ServicesRouteWithChildren
+  TransparencyRoute: typeof TransparencyRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/transparency': {
+      id: '/transparency'
+      path: '/transparency'
+      fullPath: '/transparency'
+      preLoaderRoute: typeof TransparencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saccos': {
+      id: '/saccos'
+      path: '/saccos'
+      fullPath: '/saccos'
+      preLoaderRoute: typeof SaccosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +486,299 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/transparency/': {
+      id: '/transparency/'
+      path: '/'
+      fullPath: '/transparency/'
+      preLoaderRoute: typeof TransparencyIndexRouteImport
+      parentRoute: typeof TransparencyRoute
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/saccos/': {
+      id: '/saccos/'
+      path: '/'
+      fullPath: '/saccos/'
+      preLoaderRoute: typeof SaccosIndexRouteImport
+      parentRoute: typeof SaccosRoute
+    }
+    '/resources/': {
+      id: '/resources/'
+      path: '/'
+      fullPath: '/resources/'
+      preLoaderRoute: typeof ResourcesIndexRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
+    '/news/': {
+      id: '/news/'
+      path: '/'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/impact/': {
+      id: '/impact/'
+      path: '/'
+      fullPath: '/impact/'
+      preLoaderRoute: typeof ImpactIndexRouteImport
+      parentRoute: typeof ImpactRoute
+    }
+    '/about/': {
+      id: '/about/'
+      path: '/'
+      fullPath: '/about/'
+      preLoaderRoute: typeof AboutIndexRouteImport
+      parentRoute: typeof AboutRoute
+    }
+    '/transparency/reports': {
+      id: '/transparency/reports'
+      path: '/reports'
+      fullPath: '/transparency/reports'
+      preLoaderRoute: typeof TransparencyReportsRouteImport
+      parentRoute: typeof TransparencyRoute
+    }
+    '/services/training': {
+      id: '/services/training'
+      path: '/training'
+      fullPath: '/services/training'
+      preLoaderRoute: typeof ServicesTrainingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/savings': {
+      id: '/services/savings'
+      path: '/savings'
+      fullPath: '/services/savings'
+      preLoaderRoute: typeof ServicesSavingsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/loans': {
+      id: '/services/loans'
+      path: '/loans'
+      fullPath: '/services/loans'
+      preLoaderRoute: typeof ServicesLoansRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/investments': {
+      id: '/services/investments'
+      path: '/investments'
+      fullPath: '/services/investments'
+      preLoaderRoute: typeof ServicesInvestmentsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/insurance': {
+      id: '/services/insurance'
+      path: '/insurance'
+      fullPath: '/services/insurance'
+      preLoaderRoute: typeof ServicesInsuranceRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/saccos/join': {
+      id: '/saccos/join'
+      path: '/join'
+      fullPath: '/saccos/join'
+      preLoaderRoute: typeof SaccosJoinRouteImport
+      parentRoute: typeof SaccosRoute
+    }
+    '/saccos/benefits': {
+      id: '/saccos/benefits'
+      path: '/benefits'
+      fullPath: '/saccos/benefits'
+      preLoaderRoute: typeof SaccosBenefitsRouteImport
+      parentRoute: typeof SaccosRoute
+    }
+    '/resources/publications': {
+      id: '/resources/publications'
+      path: '/publications'
+      fullPath: '/resources/publications'
+      preLoaderRoute: typeof ResourcesPublicationsRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
+    '/news/gallery': {
+      id: '/news/gallery'
+      path: '/gallery'
+      fullPath: '/news/gallery'
+      preLoaderRoute: typeof NewsGalleryRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/news/events': {
+      id: '/news/events'
+      path: '/events'
+      fullPath: '/news/events'
+      preLoaderRoute: typeof NewsEventsRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/impact/stats': {
+      id: '/impact/stats'
+      path: '/stats'
+      fullPath: '/impact/stats'
+      preLoaderRoute: typeof ImpactStatsRouteImport
+      parentRoute: typeof ImpactRoute
+    }
+    '/about/vision': {
+      id: '/about/vision'
+      path: '/vision'
+      fullPath: '/about/vision'
+      preLoaderRoute: typeof AboutVisionRouteImport
+      parentRoute: typeof AboutRoute
+    }
+    '/about/structure': {
+      id: '/about/structure'
+      path: '/structure'
+      fullPath: '/about/structure'
+      preLoaderRoute: typeof AboutStructureRouteImport
+      parentRoute: typeof AboutRoute
+    }
+    '/about/history': {
+      id: '/about/history'
+      path: '/history'
+      fullPath: '/about/history'
+      preLoaderRoute: typeof AboutHistoryRouteImport
+      parentRoute: typeof AboutRoute
+    }
+    '/about/governance': {
+      id: '/about/governance'
+      path: '/governance'
+      fullPath: '/about/governance'
+      preLoaderRoute: typeof AboutGovernanceRouteImport
+      parentRoute: typeof AboutRoute
+    }
   }
 }
 
+interface AboutRouteChildren {
+  AboutGovernanceRoute: typeof AboutGovernanceRoute
+  AboutHistoryRoute: typeof AboutHistoryRoute
+  AboutStructureRoute: typeof AboutStructureRoute
+  AboutVisionRoute: typeof AboutVisionRoute
+  AboutIndexRoute: typeof AboutIndexRoute
+}
+
+const AboutRouteChildren: AboutRouteChildren = {
+  AboutGovernanceRoute: AboutGovernanceRoute,
+  AboutHistoryRoute: AboutHistoryRoute,
+  AboutStructureRoute: AboutStructureRoute,
+  AboutVisionRoute: AboutVisionRoute,
+  AboutIndexRoute: AboutIndexRoute,
+}
+
+const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
+
+interface ImpactRouteChildren {
+  ImpactStatsRoute: typeof ImpactStatsRoute
+  ImpactIndexRoute: typeof ImpactIndexRoute
+}
+
+const ImpactRouteChildren: ImpactRouteChildren = {
+  ImpactStatsRoute: ImpactStatsRoute,
+  ImpactIndexRoute: ImpactIndexRoute,
+}
+
+const ImpactRouteWithChildren =
+  ImpactRoute._addFileChildren(ImpactRouteChildren)
+
+interface NewsRouteChildren {
+  NewsSlugRoute: typeof NewsSlugRoute
+  NewsEventsRoute: typeof NewsEventsRoute
+  NewsGalleryRoute: typeof NewsGalleryRoute
+  NewsIndexRoute: typeof NewsIndexRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsSlugRoute: NewsSlugRoute,
+  NewsEventsRoute: NewsEventsRoute,
+  NewsGalleryRoute: NewsGalleryRoute,
+  NewsIndexRoute: NewsIndexRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
+
+interface ResourcesRouteChildren {
+  ResourcesPublicationsRoute: typeof ResourcesPublicationsRoute
+  ResourcesIndexRoute: typeof ResourcesIndexRoute
+}
+
+const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesPublicationsRoute: ResourcesPublicationsRoute,
+  ResourcesIndexRoute: ResourcesIndexRoute,
+}
+
+const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
+  ResourcesRouteChildren,
+)
+
+interface SaccosRouteChildren {
+  SaccosBenefitsRoute: typeof SaccosBenefitsRoute
+  SaccosJoinRoute: typeof SaccosJoinRoute
+  SaccosIndexRoute: typeof SaccosIndexRoute
+}
+
+const SaccosRouteChildren: SaccosRouteChildren = {
+  SaccosBenefitsRoute: SaccosBenefitsRoute,
+  SaccosJoinRoute: SaccosJoinRoute,
+  SaccosIndexRoute: SaccosIndexRoute,
+}
+
+const SaccosRouteWithChildren =
+  SaccosRoute._addFileChildren(SaccosRouteChildren)
+
+interface ServicesRouteChildren {
+  ServicesInsuranceRoute: typeof ServicesInsuranceRoute
+  ServicesInvestmentsRoute: typeof ServicesInvestmentsRoute
+  ServicesLoansRoute: typeof ServicesLoansRoute
+  ServicesSavingsRoute: typeof ServicesSavingsRoute
+  ServicesTrainingRoute: typeof ServicesTrainingRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesInsuranceRoute: ServicesInsuranceRoute,
+  ServicesInvestmentsRoute: ServicesInvestmentsRoute,
+  ServicesLoansRoute: ServicesLoansRoute,
+  ServicesSavingsRoute: ServicesSavingsRoute,
+  ServicesTrainingRoute: ServicesTrainingRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
+interface TransparencyRouteChildren {
+  TransparencyReportsRoute: typeof TransparencyReportsRoute
+  TransparencyIndexRoute: typeof TransparencyIndexRoute
+}
+
+const TransparencyRouteChildren: TransparencyRouteChildren = {
+  TransparencyReportsRoute: TransparencyReportsRoute,
+  TransparencyIndexRoute: TransparencyIndexRoute,
+}
+
+const TransparencyRouteWithChildren = TransparencyRoute._addFileChildren(
+  TransparencyRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRouteWithChildren,
+  ContactRoute: ContactRoute,
+  ImpactRoute: ImpactRouteWithChildren,
+  NewsRoute: NewsRouteWithChildren,
+  ResourcesRoute: ResourcesRouteWithChildren,
+  SaccosRoute: SaccosRouteWithChildren,
+  ServicesRoute: ServicesRouteWithChildren,
+  TransparencyRoute: TransparencyRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
