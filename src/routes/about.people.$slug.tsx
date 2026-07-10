@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Section } from "@/components/site/PageShell";
-import { PEOPLE } from "@/content/site";
+import { PEOPLE, type Person, type PersonBody } from "@/content/site";
 
 export const Route = createFileRoute("/about/people/$slug")({
   loader: ({ params }) => {
@@ -31,11 +31,11 @@ export const Route = createFileRoute("/about/people/$slug")({
   ),
 });
 
-const BODY_LABEL = { board: "Board of Directors", management: "Management Team", committee: "Control Committee" } as const;
+const BODY_LABEL: Record<PersonBody, string> = { board: "Board of Directors", management: "Management Team", committee: "Control Committee" };
 
 function PersonPage() {
-  const { person } = Route.useLoaderData();
-  const initials = person.name.split(" ").slice(-2).map((n) => n[0]).join("");
+  const { person } = Route.useLoaderData() as { person: Person };
+  const initials = person.name.split(" ").slice(-2).map((n: string) => n[0]).join("");
   const peers = PEOPLE.filter((p) => p.body === person.body && p.slug !== person.slug).slice(0, 3);
 
   return (
@@ -70,7 +70,7 @@ function PersonPage() {
             <div className="rounded-2xl border border-border bg-card p-6">
               <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-accent">Focus Areas</div>
               <ul className="space-y-2">
-                {person.focus.map((f) => (
+                {person.focus.map((f: string) => (
                   <li key={f} className="flex items-start gap-3 text-sm">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                     {f}

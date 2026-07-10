@@ -40,6 +40,9 @@ import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as ImpactStatsRouteImport } from './routes/impact.stats'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
+import { Route as NewsEventsSlugRouteImport } from './routes/news.events.$slug'
+import { Route as ImpactStoriesSlugRouteImport } from './routes/impact.stories.$slug'
+import { Route as AboutPeopleSlugRouteImport } from './routes/about.people.$slug'
 
 const TransparencyRoute = TransparencyRouteImport.update({
   id: '/transparency',
@@ -196,6 +199,21 @@ const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
   path: '/governance',
   getParentRoute: () => AboutRoute,
 } as any)
+const NewsEventsSlugRoute = NewsEventsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsEventsRoute,
+} as any)
+const ImpactStoriesSlugRoute = ImpactStoriesSlugRouteImport.update({
+  id: '/stories/$slug',
+  path: '/stories/$slug',
+  getParentRoute: () => ImpactRoute,
+} as any)
+const AboutPeopleSlugRoute = AboutPeopleSlugRouteImport.update({
+  id: '/people/$slug',
+  path: '/people/$slug',
+  getParentRoute: () => AboutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -211,7 +229,7 @@ export interface FileRoutesByFullPath {
   '/about/history': typeof AboutHistoryRoute
   '/impact/stats': typeof ImpactStatsRoute
   '/news/$slug': typeof NewsSlugRoute
-  '/news/events': typeof NewsEventsRoute
+  '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
@@ -229,6 +247,9 @@ export interface FileRoutesByFullPath {
   '/saccos/': typeof SaccosIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/transparency/': typeof TransparencyIndexRoute
+  '/about/people/$slug': typeof AboutPeopleSlugRoute
+  '/impact/stories/$slug': typeof ImpactStoriesSlugRoute
+  '/news/events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -237,7 +258,7 @@ export interface FileRoutesByTo {
   '/about/history': typeof AboutHistoryRoute
   '/impact/stats': typeof ImpactStatsRoute
   '/news/$slug': typeof NewsSlugRoute
-  '/news/events': typeof NewsEventsRoute
+  '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
@@ -255,6 +276,9 @@ export interface FileRoutesByTo {
   '/saccos': typeof SaccosIndexRoute
   '/services': typeof ServicesIndexRoute
   '/transparency': typeof TransparencyIndexRoute
+  '/about/people/$slug': typeof AboutPeopleSlugRoute
+  '/impact/stories/$slug': typeof ImpactStoriesSlugRoute
+  '/news/events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -271,7 +295,7 @@ export interface FileRoutesById {
   '/about/history': typeof AboutHistoryRoute
   '/impact/stats': typeof ImpactStatsRoute
   '/news/$slug': typeof NewsSlugRoute
-  '/news/events': typeof NewsEventsRoute
+  '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
@@ -289,6 +313,9 @@ export interface FileRoutesById {
   '/saccos/': typeof SaccosIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/transparency/': typeof TransparencyIndexRoute
+  '/about/people/$slug': typeof AboutPeopleSlugRoute
+  '/impact/stories/$slug': typeof ImpactStoriesSlugRoute
+  '/news/events/$slug': typeof NewsEventsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -324,6 +351,9 @@ export interface FileRouteTypes {
     | '/saccos/'
     | '/services/'
     | '/transparency/'
+    | '/about/people/$slug'
+    | '/impact/stories/$slug'
+    | '/news/events/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -350,6 +380,9 @@ export interface FileRouteTypes {
     | '/saccos'
     | '/services'
     | '/transparency'
+    | '/about/people/$slug'
+    | '/impact/stories/$slug'
+    | '/news/events/$slug'
   id:
     | '__root__'
     | '/'
@@ -383,6 +416,9 @@ export interface FileRouteTypes {
     | '/saccos/'
     | '/services/'
     | '/transparency/'
+    | '/about/people/$slug'
+    | '/impact/stories/$slug'
+    | '/news/events/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -616,6 +652,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutGovernanceRouteImport
       parentRoute: typeof AboutRoute
     }
+    '/news/events/$slug': {
+      id: '/news/events/$slug'
+      path: '/$slug'
+      fullPath: '/news/events/$slug'
+      preLoaderRoute: typeof NewsEventsSlugRouteImport
+      parentRoute: typeof NewsEventsRoute
+    }
+    '/impact/stories/$slug': {
+      id: '/impact/stories/$slug'
+      path: '/stories/$slug'
+      fullPath: '/impact/stories/$slug'
+      preLoaderRoute: typeof ImpactStoriesSlugRouteImport
+      parentRoute: typeof ImpactRoute
+    }
+    '/about/people/$slug': {
+      id: '/about/people/$slug'
+      path: '/people/$slug'
+      fullPath: '/about/people/$slug'
+      preLoaderRoute: typeof AboutPeopleSlugRouteImport
+      parentRoute: typeof AboutRoute
+    }
   }
 }
 
@@ -623,12 +680,14 @@ interface AboutRouteChildren {
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
   AboutIndexRoute: typeof AboutIndexRoute
+  AboutPeopleSlugRoute: typeof AboutPeopleSlugRoute
 }
 
 const AboutRouteChildren: AboutRouteChildren = {
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
   AboutIndexRoute: AboutIndexRoute,
+  AboutPeopleSlugRoute: AboutPeopleSlugRoute,
 }
 
 const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
@@ -636,26 +695,40 @@ const AboutRouteWithChildren = AboutRoute._addFileChildren(AboutRouteChildren)
 interface ImpactRouteChildren {
   ImpactStatsRoute: typeof ImpactStatsRoute
   ImpactIndexRoute: typeof ImpactIndexRoute
+  ImpactStoriesSlugRoute: typeof ImpactStoriesSlugRoute
 }
 
 const ImpactRouteChildren: ImpactRouteChildren = {
   ImpactStatsRoute: ImpactStatsRoute,
   ImpactIndexRoute: ImpactIndexRoute,
+  ImpactStoriesSlugRoute: ImpactStoriesSlugRoute,
 }
 
 const ImpactRouteWithChildren =
   ImpactRoute._addFileChildren(ImpactRouteChildren)
 
+interface NewsEventsRouteChildren {
+  NewsEventsSlugRoute: typeof NewsEventsSlugRoute
+}
+
+const NewsEventsRouteChildren: NewsEventsRouteChildren = {
+  NewsEventsSlugRoute: NewsEventsSlugRoute,
+}
+
+const NewsEventsRouteWithChildren = NewsEventsRoute._addFileChildren(
+  NewsEventsRouteChildren,
+)
+
 interface NewsRouteChildren {
   NewsSlugRoute: typeof NewsSlugRoute
-  NewsEventsRoute: typeof NewsEventsRoute
+  NewsEventsRoute: typeof NewsEventsRouteWithChildren
   NewsGalleryRoute: typeof NewsGalleryRoute
   NewsIndexRoute: typeof NewsIndexRoute
 }
 
 const NewsRouteChildren: NewsRouteChildren = {
   NewsSlugRoute: NewsSlugRoute,
-  NewsEventsRoute: NewsEventsRoute,
+  NewsEventsRoute: NewsEventsRouteWithChildren,
   NewsGalleryRoute: NewsGalleryRoute,
   NewsIndexRoute: NewsIndexRoute,
 }

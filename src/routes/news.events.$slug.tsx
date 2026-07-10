@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Section } from "@/components/site/PageShell";
-import { EVENTS } from "@/content/site";
+import { EVENTS, type EventItem } from "@/content/site";
 
 export const Route = createFileRoute("/news/events/$slug")({
   loader: ({ params }) => {
@@ -33,7 +33,8 @@ export const Route = createFileRoute("/news/events/$slug")({
 });
 
 function EventPage() {
-  const { event } = Route.useLoaderData();
+  const { event } = Route.useLoaderData() as { event: EventItem };
+  type Agenda = EventItem["agenda"][number];
   const [month, day, year] = event.date.replace(",", "").split(" ");
   const others = EVENTS.filter((e) => e.slug !== event.slug).slice(0, 3);
 
@@ -68,7 +69,7 @@ function EventPage() {
 
             <h2 className="mb-6 mt-16 text-2xl font-extrabold uppercase tracking-tighter">Agenda</h2>
             <ol className="overflow-hidden rounded-2xl border border-border">
-              {event.agenda.map((a, i) => (
+              {event.agenda.map((a: Agenda, i: number) => (
                 <li key={i} className="grid grid-cols-[100px_1fr] gap-4 border-b border-border bg-card p-5 last:border-none">
                   <span className="font-mono text-xs font-bold uppercase tracking-widest text-accent">{a.time}</span>
                   <span className="text-sm">{a.item}</span>
@@ -78,7 +79,7 @@ function EventPage() {
 
             <h2 className="mb-6 mt-16 text-2xl font-extrabold uppercase tracking-tighter">Featured speakers</h2>
             <div className="grid gap-3 sm:grid-cols-2">
-              {event.speakers.map((s) => (
+              {event.speakers.map((s: string) => (
                 <div key={s} className="rounded-xl border border-border bg-card p-4 text-sm font-semibold">{s}</div>
               ))}
             </div>

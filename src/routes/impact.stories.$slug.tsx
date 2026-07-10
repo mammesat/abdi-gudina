@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Section } from "@/components/site/PageShell";
-import { STORIES } from "@/content/site";
+import { STORIES, type Story } from "@/content/site";
 
 export const Route = createFileRoute("/impact/stories/$slug")({
   loader: ({ params }) => {
@@ -33,9 +33,11 @@ export const Route = createFileRoute("/impact/stories/$slug")({
 });
 
 function StoryPage() {
-  const { story } = Route.useLoaderData();
+  const { story } = Route.useLoaderData() as { story: Story };
   const related = STORIES.filter((s) => s.slug !== story.slug).slice(0, 3);
-  const initials = story.name.split(" ").slice(-2).map((n) => n[0]).join("");
+  type Chapter = Story["chapters"][number];
+  type Outcome = Story["outcomes"][number];
+  const initials = story.name.split(" ").slice(-2).map((n: string) => n[0]).join("");
 
   return (
     <PageShell>
@@ -74,7 +76,7 @@ function StoryPage() {
             </div>
 
             <div className="mt-16 space-y-10">
-              {story.chapters.map((c, i) => (
+              {story.chapters.map((c: Chapter, i: number) => (
                 <section key={c.title}>
                   <div className="mb-3 font-mono text-xs uppercase tracking-widest text-accent">Chapter {String(i + 1).padStart(2, "0")}</div>
                   <h3 className="mb-4 text-2xl font-bold">{c.title}</h3>
@@ -96,7 +98,7 @@ function StoryPage() {
             <div className="rounded-2xl border border-border bg-card p-6">
               <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-accent">Outcomes</div>
               <ul className="space-y-3">
-                {story.outcomes.map((o) => (
+                {story.outcomes.map((o: Outcome) => (
                   <li key={o.label} className="flex justify-between border-b border-border pb-2 text-sm last:border-none">
                     <span className="text-foreground/60">{o.label}</span>
                     <span className="font-bold">{o.value}</span>
