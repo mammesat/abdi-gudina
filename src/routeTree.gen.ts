@@ -38,8 +38,6 @@ import { Route as NewsGalleryRouteImport } from './routes/news.gallery'
 import { Route as NewsEventsRouteImport } from './routes/news.events'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as ImpactStatsRouteImport } from './routes/impact.stats'
-import { Route as AboutVisionRouteImport } from './routes/about.vision'
-import { Route as AboutStructureRouteImport } from './routes/about.structure'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
 
@@ -188,16 +186,6 @@ const ImpactStatsRoute = ImpactStatsRouteImport.update({
   path: '/stats',
   getParentRoute: () => ImpactRoute,
 } as any)
-const AboutVisionRoute = AboutVisionRouteImport.update({
-  id: '/vision',
-  path: '/vision',
-  getParentRoute: () => AboutRoute,
-} as any)
-const AboutStructureRoute = AboutStructureRouteImport.update({
-  id: '/structure',
-  path: '/structure',
-  getParentRoute: () => AboutRoute,
-} as any)
 const AboutHistoryRoute = AboutHistoryRouteImport.update({
   id: '/history',
   path: '/history',
@@ -221,8 +209,6 @@ export interface FileRoutesByFullPath {
   '/transparency': typeof TransparencyRouteWithChildren
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
-  '/about/structure': typeof AboutStructureRoute
-  '/about/vision': typeof AboutVisionRoute
   '/impact/stats': typeof ImpactStatsRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRoute
@@ -249,8 +235,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
-  '/about/structure': typeof AboutStructureRoute
-  '/about/vision': typeof AboutVisionRoute
   '/impact/stats': typeof ImpactStatsRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRoute
@@ -285,8 +269,6 @@ export interface FileRoutesById {
   '/transparency': typeof TransparencyRouteWithChildren
   '/about/governance': typeof AboutGovernanceRoute
   '/about/history': typeof AboutHistoryRoute
-  '/about/structure': typeof AboutStructureRoute
-  '/about/vision': typeof AboutVisionRoute
   '/impact/stats': typeof ImpactStatsRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRoute
@@ -322,8 +304,6 @@ export interface FileRouteTypes {
     | '/transparency'
     | '/about/governance'
     | '/about/history'
-    | '/about/structure'
-    | '/about/vision'
     | '/impact/stats'
     | '/news/$slug'
     | '/news/events'
@@ -350,8 +330,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/about/governance'
     | '/about/history'
-    | '/about/structure'
-    | '/about/vision'
     | '/impact/stats'
     | '/news/$slug'
     | '/news/events'
@@ -385,8 +363,6 @@ export interface FileRouteTypes {
     | '/transparency'
     | '/about/governance'
     | '/about/history'
-    | '/about/structure'
-    | '/about/vision'
     | '/impact/stats'
     | '/news/$slug'
     | '/news/events'
@@ -626,20 +602,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpactStatsRouteImport
       parentRoute: typeof ImpactRoute
     }
-    '/about/vision': {
-      id: '/about/vision'
-      path: '/vision'
-      fullPath: '/about/vision'
-      preLoaderRoute: typeof AboutVisionRouteImport
-      parentRoute: typeof AboutRoute
-    }
-    '/about/structure': {
-      id: '/about/structure'
-      path: '/structure'
-      fullPath: '/about/structure'
-      preLoaderRoute: typeof AboutStructureRouteImport
-      parentRoute: typeof AboutRoute
-    }
     '/about/history': {
       id: '/about/history'
       path: '/history'
@@ -660,16 +622,12 @@ declare module '@tanstack/react-router' {
 interface AboutRouteChildren {
   AboutGovernanceRoute: typeof AboutGovernanceRoute
   AboutHistoryRoute: typeof AboutHistoryRoute
-  AboutStructureRoute: typeof AboutStructureRoute
-  AboutVisionRoute: typeof AboutVisionRoute
   AboutIndexRoute: typeof AboutIndexRoute
 }
 
 const AboutRouteChildren: AboutRouteChildren = {
   AboutGovernanceRoute: AboutGovernanceRoute,
   AboutHistoryRoute: AboutHistoryRoute,
-  AboutStructureRoute: AboutStructureRoute,
-  AboutVisionRoute: AboutVisionRoute,
   AboutIndexRoute: AboutIndexRoute,
 }
 
