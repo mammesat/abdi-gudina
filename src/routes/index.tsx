@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import almazImg from "@/assets/almaz-story.jpg";
 import heroImg from "@/assets/hero-community.jpg";
 import { PageShell, Section, SectionHead } from "@/components/site/PageShell";
-import { NEWS } from "@/content/site";
+import { NEWS, MILESTONES, EVENTS } from "@/content/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,10 +28,19 @@ function HomePage() {
     <PageShell>
       <Hero />
       <StatsGrid />
+      <AboutPreview />
       <Services />
+      <HowItWorks />
+      <GrowthTimeline />
       <SuccessStory />
+      <TrustSignals />
+      <FinancialSnapshot />
       <NewsPreview />
+      <ManagerWelcome />
+      <GeographicReach />
+      <EventsRibbon />
       <CTA />
+      <Awards />
     </PageShell>
   );
 }
@@ -102,6 +111,51 @@ function StatsGrid() {
   );
 }
 
+function AboutPreview() {
+  return (
+    <Section className="pb-8 pt-4">
+      <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <span className="mb-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent">Our Origin</span>
+          <h2 className="text-4xl font-extrabold uppercase leading-[1.05] tracking-tighter lg:text-5xl">
+            Rooted in Adama.<br />
+            <span className="text-accent">Built by members.</span>
+          </h2>
+        </div>
+        <div className="lg:col-span-7">
+          <p className="text-lg leading-relaxed text-foreground/70">
+            Founded in 2007 by eight primary SACCOs in Adama, Abdi Gudina emerged from a simple
+            conviction — that Ethiopian communities are better served when their savings, credit,
+            and enterprise capital stay in their own hands.
+          </p>
+          <p className="mt-6 text-lg leading-relaxed text-foreground/70">
+            Nineteen years later, we federate 50 SACCOs and 12,000+ members into a single,
+            member-governed union — reinvesting every Birr into local livelihoods, women-led
+            businesses, and smallholder agriculture across the Oromia Region.
+          </p>
+          <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
+            <div>
+              <div className="font-mono text-xs uppercase tracking-widest text-foreground/50">Founded</div>
+              <div className="mt-2 text-2xl font-extrabold">2007</div>
+            </div>
+            <div>
+              <div className="font-mono text-xs uppercase tracking-widest text-foreground/50">Governance</div>
+              <div className="mt-2 text-2xl font-extrabold">Member-Owned</div>
+            </div>
+            <div>
+              <div className="font-mono text-xs uppercase tracking-widest text-foreground/50">Region</div>
+              <div className="mt-2 text-2xl font-extrabold">Oromia</div>
+            </div>
+          </div>
+          <Link to="/about" className="mt-10 inline-block text-sm font-semibold text-accent hover:text-primary">
+            Read our full story →
+          </Link>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
 function Services() {
   return (
     <section className="bg-card py-24">
@@ -121,6 +175,74 @@ function Services() {
               <p className="text-sm text-foreground/60 group-hover:text-primary-foreground/70">{s.desc}</p>
             </Link>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const journeySteps = [
+  { n: "01", title: "Find your SACCO", desc: "Locate a primary cooperative near you from our 50-strong network across Oromia." },
+  { n: "02", title: "Register as a member", desc: "Complete SACCO membership, buy shares, and open your first savings account." },
+  { n: "03", title: "Build savings history", desc: "Grow a consistent savings record — the foundation of your cooperative credit score." },
+  { n: "04", title: "Access capital & grow", desc: "Unlock working-capital loans at 14% with credit-life insurance included." },
+];
+
+function HowItWorks() {
+  return (
+    <Section>
+      <SectionHead
+        eyebrow="Membership Journey"
+        title="How to become a member"
+        aside="Four steps from first savings deposit to fully funded enterprise loan — the cooperative way."
+      />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {journeySteps.map((s, i) => (
+          <div key={s.n} className="group relative flex flex-col rounded-2xl border border-border bg-card p-8 transition-shadow hover:shadow-xl hover:shadow-primary/5">
+            <div className="mb-8 flex items-center justify-between">
+              <span className="font-mono text-xs uppercase tracking-widest text-accent">Step {s.n}</span>
+              {i < journeySteps.length - 1 && <span className="text-accent/40">→</span>}
+            </div>
+            <h3 className="mb-3 text-xl font-bold">{s.title}</h3>
+            <p className="text-sm text-foreground/60">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div className="mt-10 text-center">
+        <Link to="/saccos/join" className="inline-block rounded-full bg-primary px-8 py-4 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5">
+          Start your membership →
+        </Link>
+      </div>
+    </Section>
+  );
+}
+
+function GrowthTimeline() {
+  return (
+    <section className="bg-primary py-24 text-primary-foreground">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <span className="mb-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent">Our Trajectory</span>
+            <h2 className="text-3xl font-extrabold uppercase tracking-tighter lg:text-4xl">Nineteen years of cooperative growth</h2>
+          </div>
+          <p className="max-w-md text-sm text-primary-foreground/60">
+            Each milestone is a member decision — voted by SACCO delegates and audited annually.
+          </p>
+        </div>
+        <div className="relative">
+          <div className="absolute left-0 right-0 top-6 hidden h-px bg-primary-foreground/15 md:block" />
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-8">
+            {MILESTONES.map((m) => (
+              <div key={m.year} className="group relative">
+                <div className="relative z-10 mb-4 flex size-12 items-center justify-center rounded-full border border-accent/40 bg-primary transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <span className="font-mono text-[11px] font-bold text-accent group-hover:text-accent-foreground">{m.year}</span>
+                </div>
+                <h3 className="mb-2 text-sm font-bold leading-snug">{m.title}</h3>
+                <p className="text-xs text-primary-foreground/50">{m.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -159,6 +281,77 @@ function SuccessStory() {
   );
 }
 
+const partners = [
+  "Federal Cooperative Agency",
+  "Oromia Cooperative Bureau",
+  "NBE",
+  "ICA Africa",
+  "Oromia Insurance",
+  "Cooperative Bank of Oromia",
+];
+
+function TrustSignals() {
+  return (
+    <section className="border-y border-border bg-card py-14">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-accent">Regulated · Audited · Federated</span>
+          <span className="text-xs text-foreground/50">Registered with the Federal Cooperative Agency, Ethiopia</span>
+        </div>
+        <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-6">
+          {partners.map((p) => (
+            <div key={p} className="flex items-center justify-center bg-card px-4 py-8 text-center">
+              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/60">{p}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const financials = [
+  { label: "Total Assets", value: "218.4M", unit: "Birr", delta: "+12.4%" },
+  { label: "Net Income", value: "9.7M", unit: "Birr", delta: "+8.1%" },
+  { label: "Operating Ratio", value: "84.2", unit: "%", delta: "−1.6 pts" },
+  { label: "Loan Recovery", value: "97.3", unit: "%", delta: "+0.9 pts" },
+];
+
+function FinancialSnapshot() {
+  return (
+    <Section>
+      <SectionHead
+        eyebrow="Radical Transparency"
+        title="FY 2025 financial snapshot"
+        aside={<Link to="/transparency" className="text-sm font-semibold text-accent hover:text-primary">View full financials →</Link>}
+      />
+      <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl bg-border md:grid-cols-2 lg:grid-cols-4">
+        {financials.map((f) => (
+          <div key={f.label} className="flex flex-col justify-between gap-8 bg-card p-8">
+            <span className="font-mono text-xs uppercase tracking-widest text-foreground/50">{f.label}</span>
+            <div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-extrabold">{f.value}</span>
+                <span className="text-sm font-medium text-foreground/60">{f.unit}</span>
+              </div>
+              <div className="mt-2 font-mono text-xs text-accent">{f.delta} YoY</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-6 rounded-2xl border border-border bg-card p-6">
+        <div>
+          <div className="font-mono text-[11px] uppercase tracking-widest text-accent">Independently Audited</div>
+          <div className="mt-1 text-sm text-foreground/70">Annual statements audited by a licensed Ethiopian firm and adopted by the General Assembly.</div>
+        </div>
+        <Link to="/transparency/reports" className="rounded-full border border-primary/20 px-6 py-3 text-xs font-bold uppercase tracking-wide transition-colors hover:bg-primary/5">
+          Download 2025 Report ↓
+        </Link>
+      </div>
+    </Section>
+  );
+}
+
 function NewsPreview() {
   return (
     <section className="bg-card py-24">
@@ -188,6 +381,145 @@ function NewsPreview() {
   );
 }
 
+function ManagerWelcome() {
+  return (
+    <Section>
+      <div className="grid grid-cols-1 gap-12 overflow-hidden rounded-3xl border border-border bg-card p-10 lg:grid-cols-12 lg:p-16">
+        <div className="lg:col-span-4">
+          <div className="relative aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl bg-primary">
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="font-mono text-6xl font-extrabold text-accent">DB</span>
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 bg-primary-dark/90 p-4 backdrop-blur">
+              <div className="font-bold text-primary-foreground">Ato Dereje Bekele</div>
+              <div className="text-xs text-primary-foreground/60">General Manager</div>
+            </div>
+          </div>
+        </div>
+        <div className="lg:col-span-8">
+          <span className="mb-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent">A Message from the GM</span>
+          <h2 className="mb-6 text-3xl font-extrabold uppercase tracking-tighter lg:text-4xl">
+            &ldquo;Every Birr we hold belongs to a member.&rdquo;
+          </h2>
+          <p className="mb-4 text-lg leading-relaxed text-foreground/70">
+            When members entrust us with their savings, they entrust us with their family&rsquo;s
+            future. Our job — mine, the board&rsquo;s, and every SACCO leader&rsquo;s — is to steward
+            that trust with discipline, transparency, and courage.
+          </p>
+          <p className="text-lg leading-relaxed text-foreground/70">
+            In 2026, we&rsquo;re doubling down on what has always worked: member-first governance,
+            audited books, and capital that stays inside our communities.
+          </p>
+          <Link to="/about/governance" className="mt-8 inline-block text-sm font-semibold text-accent hover:text-primary">
+            Meet the leadership team →
+          </Link>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+const zones = [
+  { name: "Adama", saccos: 8, top: "48%", left: "45%" },
+  { name: "Bishoftu", saccos: 5, top: "38%", left: "36%" },
+  { name: "Mojo", saccos: 4, top: "52%", left: "40%" },
+  { name: "Meki", saccos: 4, top: "62%", left: "35%" },
+  { name: "Wonji", saccos: 3, top: "56%", left: "52%" },
+  { name: "Metahara", saccos: 3, top: "50%", left: "68%" },
+  { name: "Fentale", saccos: 2, top: "44%", left: "72%" },
+  { name: "Awash", saccos: 3, top: "48%", left: "80%" },
+];
+
+function GeographicReach() {
+  return (
+    <section className="bg-primary-dark py-24 text-primary-foreground">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <span className="mb-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent">Geographic Reach</span>
+            <h2 className="text-3xl font-extrabold uppercase tracking-tighter lg:text-4xl">
+              50 SACCOs across the East Shewa corridor
+            </h2>
+          </div>
+          <div className="lg:col-span-6 lg:pt-10">
+            <p className="text-primary-foreground/60">
+              From Adama&rsquo;s trading hubs to Fentale&rsquo;s pastoral communities, our
+              cooperative network follows the roads, markets, and rivers that carry
+              Ethiopian commerce.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div className="relative overflow-hidden rounded-2xl border border-primary-foreground/10 bg-primary lg:col-span-8">
+            <div className="relative aspect-[16/9]">
+              <svg viewBox="0 0 800 450" className="absolute inset-0 h-full w-full opacity-30" aria-hidden>
+                <defs>
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="oklch(0.68 0.11 75)" strokeWidth="0.5" />
+                  </pattern>
+                </defs>
+                <rect width="800" height="450" fill="url(#grid)" />
+                <path d="M50,300 Q200,180 380,220 T760,260" stroke="oklch(0.68 0.11 75)" strokeWidth="1.5" fill="none" strokeDasharray="4 6" />
+                <path d="M150,120 Q300,280 500,300 T780,180" stroke="oklch(0.68 0.11 75 / 0.5)" strokeWidth="1" fill="none" />
+              </svg>
+              {zones.map((z) => (
+                <div key={z.name} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: z.top, left: z.left }}>
+                  <div className="relative">
+                    <span className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
+                    <span className="relative block size-3 rounded-full bg-accent" />
+                  </div>
+                  <div className="mt-2 whitespace-nowrap font-mono text-[10px] uppercase tracking-widest text-primary-foreground/80">
+                    {z.name} · {z.saccos}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="lg:col-span-4">
+            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-primary-foreground/10 bg-primary-foreground/10">
+              {zones.map((z) => (
+                <div key={z.name} className="flex flex-col justify-between bg-primary p-5">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent">{z.name}</span>
+                  <div className="mt-6 text-2xl font-extrabold">{z.saccos}<span className="ml-1 text-xs font-normal text-primary-foreground/60">SACCOs</span></div>
+                </div>
+              ))}
+            </div>
+            <Link to="/saccos" className="mt-6 inline-block text-sm font-semibold text-accent hover:text-primary-foreground">
+              Browse full SACCO directory →
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function EventsRibbon() {
+  return (
+    <Section>
+      <SectionHead
+        eyebrow="What's Next"
+        title="Upcoming events"
+        aside={<Link to="/news/events" className="text-sm font-semibold text-accent hover:text-primary">Full events calendar →</Link>}
+      />
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {EVENTS.map((e) => (
+          <article key={e.title} className="group flex flex-col gap-6 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/50">
+            <div className="flex items-start justify-between">
+              <div>
+                <div className="font-mono text-[10px] uppercase tracking-widest text-accent">{e.date}</div>
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-widest text-foreground/50">{e.location}</div>
+              </div>
+              <span className="rounded-full border border-border px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-foreground/60">{e.tag}</span>
+            </div>
+            <h3 className="text-base font-bold leading-snug transition-colors group-hover:text-accent">{e.title}</h3>
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function CTA() {
   return (
     <Section className="pb-24">
@@ -208,5 +540,35 @@ function CTA() {
         </div>
       </div>
     </Section>
+  );
+}
+
+const awards = [
+  { year: "2024", title: "Best Cooperative Union", body: "Oromia Cooperative Bureau" },
+  { year: "2023", title: "Excellence in Governance", body: "Federal Cooperative Agency" },
+  { year: "2022", title: "Women's Financial Inclusion", body: "ICA Africa" },
+  { year: "2021", title: "Rural Finance Innovation", body: "National Bank of Ethiopia" },
+  { year: "2020", title: "Community Impact Award", body: "Adama City Administration" },
+];
+
+function Awards() {
+  return (
+    <section className="border-t border-border bg-card py-16">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-10 flex items-center justify-between">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-accent">Recognition</span>
+          <span className="hidden text-xs text-foreground/50 md:block">Five consecutive years of independent recognition</span>
+        </div>
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border md:grid-cols-5">
+          {awards.map((a) => (
+            <div key={a.year} className="flex flex-col gap-3 bg-card p-6">
+              <div className="font-mono text-3xl font-extrabold text-accent">{a.year}</div>
+              <div className="text-sm font-bold leading-snug">{a.title}</div>
+              <div className="text-xs text-foreground/50">{a.body}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
