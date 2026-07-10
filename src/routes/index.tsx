@@ -268,8 +268,8 @@ function SuccessStory() {
                 <span className="text-sm text-primary-foreground/50">Merchant · 2.9M Birr loan recipient</span>
               </div>
             </footer>
-            <Link to="/impact" className="mt-10 inline-block text-sm font-semibold text-accent hover:text-primary-foreground">
-              More member stories →
+            <Link to="/impact/stories/$slug" params={{ slug: "almaz-hailu" }} className="mt-10 inline-block text-sm font-semibold text-accent hover:text-primary-foreground">
+              Read Almaz's full story →
             </Link>
           </blockquote>
         </div>
@@ -504,7 +504,12 @@ function EventsRibbon() {
       />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {EVENTS.map((e) => (
-          <article key={e.title} className="group flex flex-col gap-6 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/50">
+          <Link
+            key={e.slug}
+            to="/news/events/$slug"
+            params={{ slug: e.slug }}
+            className="group flex flex-col gap-6 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-accent/50"
+          >
             <div className="flex items-start justify-between">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-widest text-accent">{e.date}</div>
@@ -513,7 +518,7 @@ function EventsRibbon() {
               <span className="rounded-full border border-border px-2 py-1 font-mono text-[9px] uppercase tracking-widest text-foreground/60">{e.tag}</span>
             </div>
             <h3 className="text-base font-bold leading-snug transition-colors group-hover:text-accent">{e.title}</h3>
-          </article>
+          </Link>
         ))}
       </div>
     </Section>

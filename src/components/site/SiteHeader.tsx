@@ -14,10 +14,8 @@ const NAV: NavItem[] = [
     to: "/about",
     children: [
       { label: "Overview", to: "/about" },
-      { label: "History", to: "/about/history" },
-      { label: "Vision & Values", to: "/about/vision" },
-      { label: "Governance", to: "/about/governance" },
-      { label: "Structure", to: "/about/structure" },
+      { label: "History, Vision & Values", to: "/about/history" },
+      { label: "Governance & Structure", to: "/about/governance" },
     ],
   },
   {

@@ -25,10 +25,8 @@ const KEY_FACTS: [string, string][] = [
 ];
 
 const SUBLINKS = [
-  { to: "/about/history", title: "History", desc: "From 8 founding SACCOs in 2007 to 50 today." },
-  { to: "/about/vision", title: "Vision & Values", desc: "The cooperative principles that guide every decision." },
-  { to: "/about/governance", title: "Governance", desc: "Elected board, control committee, and management." },
-  { to: "/about/structure", title: "Structure", desc: "How the Union is organized from members up." },
+  { to: "/about/history", title: "History, Vision & Values", desc: "Nineteen years of milestones and the cooperative principles that guide us." },
+  { to: "/about/governance", title: "Governance & Structure", desc: "Elected board, control committee, management, and how they connect." },
 ];
 
 function AboutIndex() {
@@ -61,7 +59,7 @@ function AboutIndex() {
         </div>
       </Section>
       <Section className="bg-card">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2">
           {SUBLINKS.map((s) => (
             <Link key={s.to} to={s.to} className="group rounded-2xl border border-border bg-background p-8 transition-colors hover:border-accent">
               <h3 className="mb-3 text-lg font-bold group-hover:text-accent">{s.title}</h3>
