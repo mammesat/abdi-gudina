@@ -281,34 +281,7 @@ function SuccessStory() {
   );
 }
 
-const partners = [
-  "Federal Cooperative Agency",
-  "Oromia Cooperative Bureau",
-  "NBE",
-  "ICA Africa",
-  "Oromia Insurance",
-  "Cooperative Bank of Oromia",
-];
 
-function TrustSignals() {
-  return (
-    <section className="border-y border-border bg-card py-14">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-accent">Regulated · Audited · Federated</span>
-          <span className="text-xs text-foreground/50">Registered with the Federal Cooperative Agency, Ethiopia</span>
-        </div>
-        <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-6">
-          {partners.map((p) => (
-            <div key={p} className="flex items-center justify-center bg-card px-4 py-8 text-center">
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/60">{p}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const financials = [
   { label: "Total Assets", value: "218.4M", unit: "Birr", delta: "+12.4%" },
