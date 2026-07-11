@@ -40,19 +40,11 @@ const NAV: NavItem[] = [
     ],
   },
   {
-    label: "Impact",
+    label: "Achievements",
     to: "/impact",
     children: [
       { label: "Success Stories", to: "/impact" },
       { label: "Statistics", to: "/impact/stats" },
-    ],
-  },
-  {
-    label: "Transparency",
-    to: "/transparency",
-    children: [
-      { label: "Financial Summary", to: "/transparency" },
-      { label: "Annual Reports", to: "/transparency/reports" },
     ],
   },
   {
@@ -68,10 +60,14 @@ const NAV: NavItem[] = [
     label: "Resources",
     to: "/resources",
     children: [
-      { label: "Downloads", to: "/resources" },
+      { label: "Financial Summary", to: "/transparency" },
+      { label: "Annual Reports", to: "/transparency/reports" },
+      { label: "Downloads & Forms", to: "/resources" },
       { label: "Publications", to: "/resources/publications" },
+      { label: "FAQ", to: "/resources/faq" },
     ],
   },
+
   { label: "Contact", to: "/contact" },
 ];
 
