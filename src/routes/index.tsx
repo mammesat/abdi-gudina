@@ -392,7 +392,55 @@ function ManagerWelcome() {
   );
 }
 
+const faqs = [
+  {
+    q: "What is a Financial Cooperative Union?",
+    a: "It's a second-level cooperative owned by SACCOs rather than by individuals. Individuals join a SACCO; SACCOs join the Union. The Union then serves its member SACCOs with wholesale finance, shared services, training, and advocacy.",
+  },
+  {
+    q: "How is AG Union different from a bank?",
+    a: "We are member-owned. Every SACCO that joins the Union holds equal governance rights, and every Birr of surplus is either reinvested in member services or distributed back as patronage — no outside shareholders.",
+  },
+  {
+    q: "What services do you provide to member SACCOs?",
+    a: "Liquidity loans, pooled investment returns, credit-life insurance, capacity training for boards and staff, shared accounting and audit support, and representation before regulators.",
+  },
+  {
+    q: "Can an individual join the Union directly?",
+    a: "No. Individuals join a primary SACCO in their community. That SACCO — once it meets the affiliation standards — joins Abdi Gudina Union on their behalf.",
+  },
+  {
+    q: "How can an existing SACCO affiliate with AG Union?",
+    a: "Contact the Union office in Adama for the affiliation packet. The process involves a governance review, financial due diligence, and a General Assembly vote — typically completed within one quarter.",
+  },
+  {
+    q: "Are your accounts audited?",
+    a: "Yes. Annual statements are audited by an independent Ethiopian firm and adopted by the General Assembly. Recent audited reports are available under Resources → Annual Reports.",
+  },
+];
 
+function FAQ() {
+  return (
+    <Section className="bg-card">
+      <SectionHead
+        eyebrow="Frequently Asked"
+        title="Questions from members & SACCOs"
+        aside={<Link to="/contact" className="text-sm font-semibold text-accent hover:text-primary">Ask your own question →</Link>}
+      />
+      <div className="mx-auto max-w-4xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-background">
+        {faqs.map((f, i) => (
+          <details key={f.q} className="group" open={i === 0}>
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 p-6 transition-colors hover:bg-primary/5">
+              <span className="text-base font-bold leading-snug lg:text-lg">{f.q}</span>
+              <span className="font-mono text-2xl text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div className="px-6 pb-6 text-sm leading-relaxed text-foreground/70 lg:text-base">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </Section>
+  );
+}
 
 
 function EventsRibbon() {
