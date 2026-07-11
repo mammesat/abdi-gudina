@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import almazImg from "@/assets/almaz-story.jpg";
 import heroImg from "@/assets/hero-community.jpg";
 import { PageShell, Section, SectionHead } from "@/components/site/PageShell";
+import { SaccoLogoMarquee } from "@/components/site/SaccoLogoMarquee";
 import { NEWS, MILESTONES, EVENTS } from "@/content/site";
 
 export const Route = createFileRoute("/")({
@@ -30,6 +31,7 @@ function HomePage() {
       <StatsGrid />
       <AboutPreview />
       <Services />
+      <SaccoLogoMarquee />
       <HowItWorks />
       <GrowthTimeline />
       <SuccessStory />
@@ -44,6 +46,7 @@ function HomePage() {
     </PageShell>
   );
 }
+
 
 function Hero() {
   return (
