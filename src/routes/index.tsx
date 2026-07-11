@@ -33,14 +33,14 @@ function HomePage() {
       <HowItWorks />
       <GrowthTimeline />
       <SuccessStory />
-      <TrustSignals />
       <FinancialSnapshot />
       <NewsPreview />
       <ManagerWelcome />
-      <GeographicReach />
+      <FAQ />
       <EventsRibbon />
       <CTA />
       <Awards />
+
     </PageShell>
   );
 }
@@ -281,34 +281,7 @@ function SuccessStory() {
   );
 }
 
-const partners = [
-  "Federal Cooperative Agency",
-  "Oromia Cooperative Bureau",
-  "NBE",
-  "ICA Africa",
-  "Oromia Insurance",
-  "Cooperative Bank of Oromia",
-];
 
-function TrustSignals() {
-  return (
-    <section className="border-y border-border bg-card py-14">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-accent">Regulated · Audited · Federated</span>
-          <span className="text-xs text-foreground/50">Registered with the Federal Cooperative Agency, Ethiopia</span>
-        </div>
-        <div className="grid grid-cols-2 gap-px bg-border md:grid-cols-3 lg:grid-cols-6">
-          {partners.map((p) => (
-            <div key={p} className="flex items-center justify-center bg-card px-4 py-8 text-center">
-              <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-foreground/60">{p}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 const financials = [
   { label: "Total Assets", value: "218.4M", unit: "Birr", delta: "+12.4%" },
@@ -419,80 +392,56 @@ function ManagerWelcome() {
   );
 }
 
-const zones = [
-  { name: "Adama", saccos: 8, top: "48%", left: "45%" },
-  { name: "Bishoftu", saccos: 5, top: "38%", left: "36%" },
-  { name: "Mojo", saccos: 4, top: "52%", left: "40%" },
-  { name: "Meki", saccos: 4, top: "62%", left: "35%" },
-  { name: "Wonji", saccos: 3, top: "56%", left: "52%" },
-  { name: "Metahara", saccos: 3, top: "50%", left: "68%" },
-  { name: "Fentale", saccos: 2, top: "44%", left: "72%" },
-  { name: "Awash", saccos: 3, top: "48%", left: "80%" },
+const faqs = [
+  {
+    q: "What is a Financial Cooperative Union?",
+    a: "It's a second-level cooperative owned by SACCOs rather than by individuals. Individuals join a SACCO; SACCOs join the Union. The Union then serves its member SACCOs with wholesale finance, shared services, training, and advocacy.",
+  },
+  {
+    q: "How is AG Union different from a bank?",
+    a: "We are member-owned. Every SACCO that joins the Union holds equal governance rights, and every Birr of surplus is either reinvested in member services or distributed back as patronage — no outside shareholders.",
+  },
+  {
+    q: "What services do you provide to member SACCOs?",
+    a: "Liquidity loans, pooled investment returns, credit-life insurance, capacity training for boards and staff, shared accounting and audit support, and representation before regulators.",
+  },
+  {
+    q: "Can an individual join the Union directly?",
+    a: "No. Individuals join a primary SACCO in their community. That SACCO — once it meets the affiliation standards — joins Abdi Gudina Union on their behalf.",
+  },
+  {
+    q: "How can an existing SACCO affiliate with AG Union?",
+    a: "Contact the Union office in Adama for the affiliation packet. The process involves a governance review, financial due diligence, and a General Assembly vote — typically completed within one quarter.",
+  },
+  {
+    q: "Are your accounts audited?",
+    a: "Yes. Annual statements are audited by an independent Ethiopian firm and adopted by the General Assembly. Recent audited reports are available under Resources → Annual Reports.",
+  },
 ];
 
-function GeographicReach() {
+function FAQ() {
   return (
-    <section className="bg-primary-dark py-24 text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <span className="mb-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent">Geographic Reach</span>
-            <h2 className="text-3xl font-extrabold uppercase tracking-tighter lg:text-4xl">
-              50 SACCOs across the East Shewa corridor
-            </h2>
-          </div>
-          <div className="lg:col-span-6 lg:pt-10">
-            <p className="text-primary-foreground/60">
-              From Adama&rsquo;s trading hubs to Fentale&rsquo;s pastoral communities, our
-              cooperative network follows the roads, markets, and rivers that carry
-              Ethiopian commerce.
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div className="relative overflow-hidden rounded-2xl border border-primary-foreground/10 bg-primary lg:col-span-8">
-            <div className="relative aspect-[16/9]">
-              <svg viewBox="0 0 800 450" className="absolute inset-0 h-full w-full opacity-30" aria-hidden>
-                <defs>
-                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="oklch(0.68 0.11 75)" strokeWidth="0.5" />
-                  </pattern>
-                </defs>
-                <rect width="800" height="450" fill="url(#grid)" />
-                <path d="M50,300 Q200,180 380,220 T760,260" stroke="oklch(0.68 0.11 75)" strokeWidth="1.5" fill="none" strokeDasharray="4 6" />
-                <path d="M150,120 Q300,280 500,300 T780,180" stroke="oklch(0.68 0.11 75 / 0.5)" strokeWidth="1" fill="none" />
-              </svg>
-              {zones.map((z) => (
-                <div key={z.name} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: z.top, left: z.left }}>
-                  <div className="relative">
-                    <span className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
-                    <span className="relative block size-3 rounded-full bg-accent" />
-                  </div>
-                  <div className="mt-2 whitespace-nowrap font-mono text-[10px] uppercase tracking-widest text-primary-foreground/80">
-                    {z.name} · {z.saccos}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="lg:col-span-4">
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-primary-foreground/10 bg-primary-foreground/10">
-              {zones.map((z) => (
-                <div key={z.name} className="flex flex-col justify-between bg-primary p-5">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent">{z.name}</span>
-                  <div className="mt-6 text-2xl font-extrabold">{z.saccos}<span className="ml-1 text-xs font-normal text-primary-foreground/60">SACCOs</span></div>
-                </div>
-              ))}
-            </div>
-            <Link to="/saccos" className="mt-6 inline-block text-sm font-semibold text-accent hover:text-primary-foreground">
-              Browse full SACCO directory →
-            </Link>
-          </div>
-        </div>
+    <Section className="bg-card">
+      <SectionHead
+        eyebrow="Frequently Asked"
+        title="Questions from members & SACCOs"
+        aside={<Link to="/contact" className="text-sm font-semibold text-accent hover:text-primary">Ask your own question →</Link>}
+      />
+      <div className="mx-auto max-w-4xl divide-y divide-border overflow-hidden rounded-2xl border border-border bg-background">
+        {faqs.map((f, i) => (
+          <details key={f.q} className="group" open={i === 0}>
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 p-6 transition-colors hover:bg-primary/5">
+              <span className="text-base font-bold leading-snug lg:text-lg">{f.q}</span>
+              <span className="font-mono text-2xl text-accent transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <div className="px-6 pb-6 text-sm leading-relaxed text-foreground/70 lg:text-base">{f.a}</div>
+          </details>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }
+
 
 function EventsRibbon() {
   return (
