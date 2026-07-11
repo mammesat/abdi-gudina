@@ -43,7 +43,15 @@ export const getNews = createServerFn({ method: "GET" }).handler(async (): Promi
   const { NEWS } = await import("@/content/site");
 
   const posts = await wp.posts({ per_page: 12 });
-  if (!posts || posts.length === 0) return NEWS;
+  if (!posts || posts.length === 0) {
+    return NEWS.map((n) => ({
+      slug: n.slug,
+      date: n.date,
+      category: n.tag,
+      title: n.title,
+      excerpt: n.excerpt,
+    }));
+  }
 
   return posts.map((p) => {
     const cat = p._embedded?.["wp:term"]?.[0]?.[0]?.name ?? "News";
