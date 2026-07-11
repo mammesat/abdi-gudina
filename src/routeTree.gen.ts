@@ -34,6 +34,7 @@ import { Route as ServicesInsuranceRouteImport } from './routes/services.insuran
 import { Route as SaccosJoinRouteImport } from './routes/saccos.join'
 import { Route as SaccosBenefitsRouteImport } from './routes/saccos.benefits'
 import { Route as ResourcesPublicationsRouteImport } from './routes/resources.publications'
+import { Route as ResourcesFaqRouteImport } from './routes/resources.faq'
 import { Route as NewsGalleryRouteImport } from './routes/news.gallery'
 import { Route as NewsEventsRouteImport } from './routes/news.events'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
@@ -169,6 +170,11 @@ const ResourcesPublicationsRoute = ResourcesPublicationsRouteImport.update({
   path: '/publications',
   getParentRoute: () => ResourcesRoute,
 } as any)
+const ResourcesFaqRoute = ResourcesFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => ResourcesRoute,
+} as any)
 const NewsGalleryRoute = NewsGalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
@@ -231,6 +237,7 @@ export interface FileRoutesByFullPath {
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
+  '/resources/faq': typeof ResourcesFaqRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
   '/saccos/join': typeof SaccosJoinRoute
@@ -260,6 +267,7 @@ export interface FileRoutesByTo {
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
+  '/resources/faq': typeof ResourcesFaqRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
   '/saccos/join': typeof SaccosJoinRoute
@@ -297,6 +305,7 @@ export interface FileRoutesById {
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
+  '/resources/faq': typeof ResourcesFaqRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
   '/saccos/join': typeof SaccosJoinRoute
@@ -335,6 +344,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/news/events'
     | '/news/gallery'
+    | '/resources/faq'
     | '/resources/publications'
     | '/saccos/benefits'
     | '/saccos/join'
@@ -364,6 +374,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/news/events'
     | '/news/gallery'
+    | '/resources/faq'
     | '/resources/publications'
     | '/saccos/benefits'
     | '/saccos/join'
@@ -400,6 +411,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/news/events'
     | '/news/gallery'
+    | '/resources/faq'
     | '/resources/publications'
     | '/saccos/benefits'
     | '/saccos/join'
@@ -610,6 +622,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesPublicationsRouteImport
       parentRoute: typeof ResourcesRoute
     }
+    '/resources/faq': {
+      id: '/resources/faq'
+      path: '/faq'
+      fullPath: '/resources/faq'
+      preLoaderRoute: typeof ResourcesFaqRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
     '/news/gallery': {
       id: '/news/gallery'
       path: '/gallery'
@@ -736,11 +755,13 @@ const NewsRouteChildren: NewsRouteChildren = {
 const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
 interface ResourcesRouteChildren {
+  ResourcesFaqRoute: typeof ResourcesFaqRoute
   ResourcesPublicationsRoute: typeof ResourcesPublicationsRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
 }
 
 const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesFaqRoute: ResourcesFaqRoute,
   ResourcesPublicationsRoute: ResourcesPublicationsRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
 }
