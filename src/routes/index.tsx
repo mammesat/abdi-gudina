@@ -33,14 +33,14 @@ function HomePage() {
       <HowItWorks />
       <GrowthTimeline />
       <SuccessStory />
-      <TrustSignals />
       <FinancialSnapshot />
       <NewsPreview />
       <ManagerWelcome />
-      <GeographicReach />
+      <FAQ />
       <EventsRibbon />
       <CTA />
       <Awards />
+
     </PageShell>
   );
 }
