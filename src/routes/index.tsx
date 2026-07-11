@@ -392,80 +392,8 @@ function ManagerWelcome() {
   );
 }
 
-const zones = [
-  { name: "Adama", saccos: 8, top: "48%", left: "45%" },
-  { name: "Bishoftu", saccos: 5, top: "38%", left: "36%" },
-  { name: "Mojo", saccos: 4, top: "52%", left: "40%" },
-  { name: "Meki", saccos: 4, top: "62%", left: "35%" },
-  { name: "Wonji", saccos: 3, top: "56%", left: "52%" },
-  { name: "Metahara", saccos: 3, top: "50%", left: "68%" },
-  { name: "Fentale", saccos: 2, top: "44%", left: "72%" },
-  { name: "Awash", saccos: 3, top: "48%", left: "80%" },
-];
 
-function GeographicReach() {
-  return (
-    <section className="bg-primary-dark py-24 text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-14 grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-6">
-            <span className="mb-4 inline-block font-mono text-[11px] uppercase tracking-widest text-accent">Geographic Reach</span>
-            <h2 className="text-3xl font-extrabold uppercase tracking-tighter lg:text-4xl">
-              50 SACCOs across the East Shewa corridor
-            </h2>
-          </div>
-          <div className="lg:col-span-6 lg:pt-10">
-            <p className="text-primary-foreground/60">
-              From Adama&rsquo;s trading hubs to Fentale&rsquo;s pastoral communities, our
-              cooperative network follows the roads, markets, and rivers that carry
-              Ethiopian commerce.
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div className="relative overflow-hidden rounded-2xl border border-primary-foreground/10 bg-primary lg:col-span-8">
-            <div className="relative aspect-[16/9]">
-              <svg viewBox="0 0 800 450" className="absolute inset-0 h-full w-full opacity-30" aria-hidden>
-                <defs>
-                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="oklch(0.68 0.11 75)" strokeWidth="0.5" />
-                  </pattern>
-                </defs>
-                <rect width="800" height="450" fill="url(#grid)" />
-                <path d="M50,300 Q200,180 380,220 T760,260" stroke="oklch(0.68 0.11 75)" strokeWidth="1.5" fill="none" strokeDasharray="4 6" />
-                <path d="M150,120 Q300,280 500,300 T780,180" stroke="oklch(0.68 0.11 75 / 0.5)" strokeWidth="1" fill="none" />
-              </svg>
-              {zones.map((z) => (
-                <div key={z.name} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ top: z.top, left: z.left }}>
-                  <div className="relative">
-                    <span className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
-                    <span className="relative block size-3 rounded-full bg-accent" />
-                  </div>
-                  <div className="mt-2 whitespace-nowrap font-mono text-[10px] uppercase tracking-widest text-primary-foreground/80">
-                    {z.name} · {z.saccos}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="lg:col-span-4">
-            <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-primary-foreground/10 bg-primary-foreground/10">
-              {zones.map((z) => (
-                <div key={z.name} className="flex flex-col justify-between bg-primary p-5">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent">{z.name}</span>
-                  <div className="mt-6 text-2xl font-extrabold">{z.saccos}<span className="ml-1 text-xs font-normal text-primary-foreground/60">SACCOs</span></div>
-                </div>
-              ))}
-            </div>
-            <Link to="/saccos" className="mt-6 inline-block text-sm font-semibold text-accent hover:text-primary-foreground">
-              Browse full SACCO directory →
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+
 
 function EventsRibbon() {
   return (
