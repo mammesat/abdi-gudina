@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeader, Section } from "@/components/site/PageShell";
-import { getResources } from "@/lib/wp.functions";
+import { getResources, type SiteResource } from "@/lib/wp.functions";
 import { ResourceCard } from "./resources.index";
 
 export const Route = createFileRoute("/resources/forms")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/resources/forms")({
       { property: "og:description", content: "Downloadable forms and templates for members and SACCOs." },
     ],
   }),
-  loader: () => getResources({ data: { kind: "form" } }),
+  loader: async (): Promise<SiteResource[]> => (await getResources({ data: { kind: "form" } })) as SiteResource[],
   component: FormsPage,
 });
 

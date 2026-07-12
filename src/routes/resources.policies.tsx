@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeader, Section } from "@/components/site/PageShell";
-import { getResources } from "@/lib/wp.functions";
+import { getResources, type SiteResource } from "@/lib/wp.functions";
 import { ResourceCard } from "./resources.index";
 
 export const Route = createFileRoute("/resources/policies")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/resources/policies")({
       { property: "og:description", content: "Governance policies and operating rules of AG Union." },
     ],
   }),
-  loader: () => getResources({ data: { kind: "policy" } }),
+  loader: async (): Promise<SiteResource[]> => (await getResources({ data: { kind: "policy" } })) as SiteResource[],
   component: PoliciesPage,
 });
 

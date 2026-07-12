@@ -13,7 +13,7 @@ export const Route = createFileRoute("/resources/")({
       { property: "og:description", content: "Governance policies, audit reports, membership forms, and research publications." },
     ],
   }),
-  loader: () => getResources(),
+  loader: async (): Promise<SiteResource[]> => (await getResources()) as SiteResource[],
   component: ResourcesIndex,
   errorComponent: ({ error }) => (
     <PageShell>

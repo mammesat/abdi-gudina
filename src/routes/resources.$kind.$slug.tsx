@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Section } from "@/components/site/PageShell";
-import { getResource } from "@/lib/wp.functions";
+import { getResource, type SiteResource } from "@/lib/wp.functions";
 import type { ResourceKind } from "@/content/site";
 
 const KINDS: ResourceKind[] = ["policy", "audit", "form", "publication"];
@@ -14,8 +14,8 @@ export const Route = createFileRoute("/resources/$kind/$slug")({
     },
     stringify: (parsed) => ({ kind: parsed.kind, slug: parsed.slug }),
   },
-  loader: async ({ params }) => {
-    const r = await getResource({ data: { kind: params.kind, slug: params.slug } });
+  loader: async ({ params }): Promise<{ r: SiteResource }> => {
+    const r = (await getResource({ data: { kind: params.kind, slug: params.slug } })) as SiteResource | null;
     if (!r) throw notFound();
     return { r };
   },

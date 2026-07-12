@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeader, Section } from "@/components/site/PageShell";
-import { getResources } from "@/lib/wp.functions";
+import { getResources, type SiteResource } from "@/lib/wp.functions";
 import { ResourceCard } from "./resources.index";
 
 export const Route = createFileRoute("/resources/audits")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/resources/audits")({
       { property: "og:description", content: "Independent audits, internal control reports, and compliance reviews." },
     ],
   }),
-  loader: () => getResources({ data: { kind: "audit" } }),
+  loader: async (): Promise<SiteResource[]> => (await getResources({ data: { kind: "audit" } })) as SiteResource[],
   component: AuditsPage,
 });
 
