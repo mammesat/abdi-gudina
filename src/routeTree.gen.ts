@@ -34,13 +34,17 @@ import { Route as ServicesInsuranceRouteImport } from './routes/services.insuran
 import { Route as SaccosJoinRouteImport } from './routes/saccos.join'
 import { Route as SaccosBenefitsRouteImport } from './routes/saccos.benefits'
 import { Route as ResourcesPublicationsRouteImport } from './routes/resources.publications'
+import { Route as ResourcesPoliciesRouteImport } from './routes/resources.policies'
+import { Route as ResourcesFormsRouteImport } from './routes/resources.forms'
 import { Route as ResourcesFaqRouteImport } from './routes/resources.faq'
+import { Route as ResourcesAuditsRouteImport } from './routes/resources.audits'
 import { Route as NewsGalleryRouteImport } from './routes/news.gallery'
 import { Route as NewsEventsRouteImport } from './routes/news.events'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as ImpactStatsRouteImport } from './routes/impact.stats'
 import { Route as AboutHistoryRouteImport } from './routes/about.history'
 import { Route as AboutGovernanceRouteImport } from './routes/about.governance'
+import { Route as ResourcesKindSlugRouteImport } from './routes/resources.$kind.$slug'
 import { Route as NewsEventsSlugRouteImport } from './routes/news.events.$slug'
 import { Route as ImpactStoriesSlugRouteImport } from './routes/impact.stories.$slug'
 import { Route as AboutPeopleSlugRouteImport } from './routes/about.people.$slug'
@@ -170,9 +174,24 @@ const ResourcesPublicationsRoute = ResourcesPublicationsRouteImport.update({
   path: '/publications',
   getParentRoute: () => ResourcesRoute,
 } as any)
+const ResourcesPoliciesRoute = ResourcesPoliciesRouteImport.update({
+  id: '/policies',
+  path: '/policies',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+const ResourcesFormsRoute = ResourcesFormsRouteImport.update({
+  id: '/forms',
+  path: '/forms',
+  getParentRoute: () => ResourcesRoute,
+} as any)
 const ResourcesFaqRoute = ResourcesFaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => ResourcesRoute,
+} as any)
+const ResourcesAuditsRoute = ResourcesAuditsRouteImport.update({
+  id: '/audits',
+  path: '/audits',
   getParentRoute: () => ResourcesRoute,
 } as any)
 const NewsGalleryRoute = NewsGalleryRouteImport.update({
@@ -204,6 +223,11 @@ const AboutGovernanceRoute = AboutGovernanceRouteImport.update({
   id: '/governance',
   path: '/governance',
   getParentRoute: () => AboutRoute,
+} as any)
+const ResourcesKindSlugRoute = ResourcesKindSlugRouteImport.update({
+  id: '/$kind/$slug',
+  path: '/$kind/$slug',
+  getParentRoute: () => ResourcesRoute,
 } as any)
 const NewsEventsSlugRoute = NewsEventsSlugRouteImport.update({
   id: '/$slug',
@@ -237,7 +261,10 @@ export interface FileRoutesByFullPath {
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
+  '/resources/audits': typeof ResourcesAuditsRoute
   '/resources/faq': typeof ResourcesFaqRoute
+  '/resources/forms': typeof ResourcesFormsRoute
+  '/resources/policies': typeof ResourcesPoliciesRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
   '/saccos/join': typeof SaccosJoinRoute
@@ -257,6 +284,7 @@ export interface FileRoutesByFullPath {
   '/about/people/$slug': typeof AboutPeopleSlugRoute
   '/impact/stories/$slug': typeof ImpactStoriesSlugRoute
   '/news/events/$slug': typeof NewsEventsSlugRoute
+  '/resources/$kind/$slug': typeof ResourcesKindSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -267,7 +295,10 @@ export interface FileRoutesByTo {
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
+  '/resources/audits': typeof ResourcesAuditsRoute
   '/resources/faq': typeof ResourcesFaqRoute
+  '/resources/forms': typeof ResourcesFormsRoute
+  '/resources/policies': typeof ResourcesPoliciesRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
   '/saccos/join': typeof SaccosJoinRoute
@@ -287,6 +318,7 @@ export interface FileRoutesByTo {
   '/about/people/$slug': typeof AboutPeopleSlugRoute
   '/impact/stories/$slug': typeof ImpactStoriesSlugRoute
   '/news/events/$slug': typeof NewsEventsSlugRoute
+  '/resources/$kind/$slug': typeof ResourcesKindSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -305,7 +337,10 @@ export interface FileRoutesById {
   '/news/$slug': typeof NewsSlugRoute
   '/news/events': typeof NewsEventsRouteWithChildren
   '/news/gallery': typeof NewsGalleryRoute
+  '/resources/audits': typeof ResourcesAuditsRoute
   '/resources/faq': typeof ResourcesFaqRoute
+  '/resources/forms': typeof ResourcesFormsRoute
+  '/resources/policies': typeof ResourcesPoliciesRoute
   '/resources/publications': typeof ResourcesPublicationsRoute
   '/saccos/benefits': typeof SaccosBenefitsRoute
   '/saccos/join': typeof SaccosJoinRoute
@@ -325,6 +360,7 @@ export interface FileRoutesById {
   '/about/people/$slug': typeof AboutPeopleSlugRoute
   '/impact/stories/$slug': typeof ImpactStoriesSlugRoute
   '/news/events/$slug': typeof NewsEventsSlugRoute
+  '/resources/$kind/$slug': typeof ResourcesKindSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -344,7 +380,10 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/news/events'
     | '/news/gallery'
+    | '/resources/audits'
     | '/resources/faq'
+    | '/resources/forms'
+    | '/resources/policies'
     | '/resources/publications'
     | '/saccos/benefits'
     | '/saccos/join'
@@ -364,6 +403,7 @@ export interface FileRouteTypes {
     | '/about/people/$slug'
     | '/impact/stories/$slug'
     | '/news/events/$slug'
+    | '/resources/$kind/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -374,7 +414,10 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/news/events'
     | '/news/gallery'
+    | '/resources/audits'
     | '/resources/faq'
+    | '/resources/forms'
+    | '/resources/policies'
     | '/resources/publications'
     | '/saccos/benefits'
     | '/saccos/join'
@@ -394,6 +437,7 @@ export interface FileRouteTypes {
     | '/about/people/$slug'
     | '/impact/stories/$slug'
     | '/news/events/$slug'
+    | '/resources/$kind/$slug'
   id:
     | '__root__'
     | '/'
@@ -411,7 +455,10 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/news/events'
     | '/news/gallery'
+    | '/resources/audits'
     | '/resources/faq'
+    | '/resources/forms'
+    | '/resources/policies'
     | '/resources/publications'
     | '/saccos/benefits'
     | '/saccos/join'
@@ -431,6 +478,7 @@ export interface FileRouteTypes {
     | '/about/people/$slug'
     | '/impact/stories/$slug'
     | '/news/events/$slug'
+    | '/resources/$kind/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -622,11 +670,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesPublicationsRouteImport
       parentRoute: typeof ResourcesRoute
     }
+    '/resources/policies': {
+      id: '/resources/policies'
+      path: '/policies'
+      fullPath: '/resources/policies'
+      preLoaderRoute: typeof ResourcesPoliciesRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
+    '/resources/forms': {
+      id: '/resources/forms'
+      path: '/forms'
+      fullPath: '/resources/forms'
+      preLoaderRoute: typeof ResourcesFormsRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
     '/resources/faq': {
       id: '/resources/faq'
       path: '/faq'
       fullPath: '/resources/faq'
       preLoaderRoute: typeof ResourcesFaqRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
+    '/resources/audits': {
+      id: '/resources/audits'
+      path: '/audits'
+      fullPath: '/resources/audits'
+      preLoaderRoute: typeof ResourcesAuditsRouteImport
       parentRoute: typeof ResourcesRoute
     }
     '/news/gallery': {
@@ -670,6 +739,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/about/governance'
       preLoaderRoute: typeof AboutGovernanceRouteImport
       parentRoute: typeof AboutRoute
+    }
+    '/resources/$kind/$slug': {
+      id: '/resources/$kind/$slug'
+      path: '/$kind/$slug'
+      fullPath: '/resources/$kind/$slug'
+      preLoaderRoute: typeof ResourcesKindSlugRouteImport
+      parentRoute: typeof ResourcesRoute
     }
     '/news/events/$slug': {
       id: '/news/events/$slug'
@@ -755,15 +831,23 @@ const NewsRouteChildren: NewsRouteChildren = {
 const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
 interface ResourcesRouteChildren {
+  ResourcesAuditsRoute: typeof ResourcesAuditsRoute
   ResourcesFaqRoute: typeof ResourcesFaqRoute
+  ResourcesFormsRoute: typeof ResourcesFormsRoute
+  ResourcesPoliciesRoute: typeof ResourcesPoliciesRoute
   ResourcesPublicationsRoute: typeof ResourcesPublicationsRoute
   ResourcesIndexRoute: typeof ResourcesIndexRoute
+  ResourcesKindSlugRoute: typeof ResourcesKindSlugRoute
 }
 
 const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesAuditsRoute: ResourcesAuditsRoute,
   ResourcesFaqRoute: ResourcesFaqRoute,
+  ResourcesFormsRoute: ResourcesFormsRoute,
+  ResourcesPoliciesRoute: ResourcesPoliciesRoute,
   ResourcesPublicationsRoute: ResourcesPublicationsRoute,
   ResourcesIndexRoute: ResourcesIndexRoute,
+  ResourcesKindSlugRoute: ResourcesKindSlugRoute,
 }
 
 const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
