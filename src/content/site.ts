@@ -532,3 +532,263 @@ export const REPORTS = [
   { year: "2022", title: "Annual Report 2022", size: "3.2 MB", pages: 54 },
   { year: "2021", title: "Annual Report 2021", size: "2.9 MB", pages: 48 },
 ];
+
+// ---------- Unified Resource Library ----------
+// Maps 1:1 to WordPress custom post types (`policy`, `audit`, `form`,
+// `publication`) plus their ACF fields. Detail pages render `body` (post
+// content) and the ACF fields declared here.
+export type ResourceKind = "policy" | "audit" | "form" | "publication";
+
+export type Resource = {
+  slug: string;
+  kind: ResourceKind;
+  title: string;
+  category: string;       // maps to WP taxonomy term (resource_category)
+  year: string;
+  updated: string;
+  summary: string;
+  fileSize?: string;
+  filePages?: number;
+  fileUrl?: string;       // ACF: file_url
+  body: string[];         // post_content, split into paragraphs
+  fields: { label: string; value: string }[]; // ACF meta rendered as a table
+};
+
+export const RESOURCES: Resource[] = [
+  {
+    slug: "union-bylaws-2024",
+    kind: "policy",
+    title: "Union Bylaws (Revised 2024)",
+    category: "Governance",
+    year: "2024",
+    updated: "Nov 12, 2024",
+    summary: "The constitutional document of AG Union — membership, governance, capital, and dissolution provisions, revised and adopted by the 2024 General Assembly.",
+    fileSize: "480 KB",
+    filePages: 42,
+    body: [
+      "The revised Bylaws consolidate 19 years of cooperative practice into a single governing document. They define the rights and obligations of member SACCOs, the authority of the General Assembly, and the composition of the Board of Directors and Control Committee.",
+      "Substantive 2024 amendments include a mandatory two-term limit for board officers, a formalized capacity-building levy, and updated procedures for admitting new member SACCOs.",
+    ],
+    fields: [
+      { label: "Adopted by", value: "2024 General Assembly" },
+      { label: "Effective", value: "January 1, 2025" },
+      { label: "Supersedes", value: "2018 Bylaws" },
+    ],
+  },
+  {
+    slug: "credit-lending-policy",
+    kind: "policy",
+    title: "Credit & Lending Policy",
+    category: "Credit",
+    year: "2025",
+    updated: "Mar 4, 2025",
+    summary: "Standardized 14% pricing, underwriting criteria, disbursement workflow, and delinquency treatment for all Union-backed loans.",
+    fileSize: "310 KB",
+    filePages: 28,
+    body: [
+      "This policy applies to every loan issued through a member SACCO using Union capital. It sets a uniform 14% annual rate, defines the four-tier loan ladder (from 50,000 up to 5,000,000 Birr), and specifies mandatory credit-life insurance coverage on all disbursements.",
+      "Delinquency treatment is codified: 30-day grace, 60-day workout, 90-day loss provisioning, with mandatory Control Committee review at each stage.",
+    ],
+    fields: [
+      { label: "Standard rate", value: "14% APR" },
+      { label: "Loan range", value: "50,000 – 5,000,000 Birr" },
+      { label: "Credit-life coverage", value: "Mandatory, included" },
+    ],
+  },
+  {
+    slug: "governance-handbook",
+    kind: "policy",
+    title: "Governance Handbook",
+    category: "Governance",
+    year: "2024",
+    updated: "Aug 20, 2024",
+    summary: "Operating manual for board members, committee chairs, and SACCO delegates — meeting cadence, resolution formats, and reporting duties.",
+    fileSize: "1.2 MB",
+    filePages: 84,
+    body: [
+      "The handbook is the day-to-day reference for anyone holding governance responsibility in AG Union. It covers annual calendars, resolution templates, quorum rules, and conflict-of-interest procedures.",
+    ],
+    fields: [
+      { label: "Audience", value: "Board · Committee · Delegates" },
+      { label: "Review cycle", value: "Every 3 years" },
+    ],
+  },
+
+  {
+    slug: "external-audit-fy2025",
+    kind: "audit",
+    title: "External Audit Report — FY 2025",
+    category: "Financial Audit",
+    year: "2025",
+    updated: "Feb 18, 2026",
+    summary: "Unqualified audit opinion for fiscal year 2025 issued by a licensed Ethiopian audit firm. Covers financial statements, internal controls, and loan portfolio classification.",
+    fileSize: "1.8 MB",
+    filePages: 52,
+    body: [
+      "The independent auditor issued an unqualified opinion on the FY 2025 financial statements. Total assets grew 12.4% YoY to 218.4M Birr and loan recovery reached 97.3%.",
+      "Internal control testing found no material weaknesses. Two administrative observations were raised and closed by the Union within 30 days.",
+    ],
+    fields: [
+      { label: "Auditor", value: "Independent licensed firm" },
+      { label: "Opinion", value: "Unqualified" },
+      { label: "Fiscal year", value: "July 2024 – June 2025" },
+    ],
+  },
+  {
+    slug: "control-committee-report-q2-2026",
+    kind: "audit",
+    title: "Control Committee Report — Q2 2026",
+    category: "Internal Audit",
+    year: "2026",
+    updated: "Jul 8, 2026",
+    summary: "Quarterly internal review by the elected three-member Control Committee. Covers loan approvals, procurement, and SACCO reporting compliance.",
+    fileSize: "620 KB",
+    filePages: 18,
+    body: [
+      "The Committee reviewed 100% of loan approvals above 1M Birr in Q2 and a stratified 20% sample of smaller loans. All reviewed files met the standard underwriting checklist.",
+    ],
+    fields: [
+      { label: "Chair", value: "Ato Kebede Worku" },
+      { label: "Period", value: "Apr – Jun 2026" },
+      { label: "Findings", value: "0 material · 3 observations" },
+    ],
+  },
+  {
+    slug: "compliance-audit-2024",
+    kind: "audit",
+    title: "Cooperative Compliance Audit — 2024",
+    category: "Regulatory Audit",
+    year: "2024",
+    updated: "Dec 15, 2024",
+    summary: "Compliance review conducted by the Oromia Cooperative Bureau confirming AG Union's standing under the Federal Cooperative Societies Proclamation.",
+    fileSize: "540 KB",
+    filePages: 22,
+    body: [
+      "The Bureau confirmed AG Union's compliance with the Federal Cooperative Societies Proclamation No. 985/2016 and the Oromia Regional Cooperative Regulation.",
+    ],
+    fields: [
+      { label: "Regulator", value: "Oromia Cooperative Bureau" },
+      { label: "Result", value: "Compliant · License renewed" },
+    ],
+  },
+
+  {
+    slug: "membership-application",
+    kind: "form",
+    title: "SACCO Membership Application",
+    category: "Membership",
+    year: "2026",
+    updated: "Jan 10, 2026",
+    summary: "Standard membership form used across all 50 member SACCOs. Complete the form, attach ID copies, and submit to your nearest SACCO branch.",
+    fileSize: "180 KB",
+    body: [
+      "The membership application collects identity, contact, and next-of-kin details, plus a short savings-goal declaration. Applications are reviewed by the SACCO management committee within 14 days.",
+      "You will also open a savings account and buy a minimum of one Union share as part of joining.",
+    ],
+    fields: [
+      { label: "Format", value: "PDF fillable" },
+      { label: "Submit to", value: "Your local SACCO branch" },
+      { label: "Processing", value: "≤ 14 days" },
+    ],
+  },
+  {
+    slug: "loan-application",
+    kind: "form",
+    title: "Union Loan Application",
+    category: "Credit",
+    year: "2026",
+    updated: "Mar 5, 2026",
+    summary: "Application form for Union-backed loans (50,000 – 5,000,000 Birr). Requires 12 months of savings history and SACCO co-signature.",
+    fileSize: "220 KB",
+    body: [
+      "The loan application covers borrower details, requested amount, purpose of funds, and repayment plan. Attach your SACCO passbook, business documentation (where applicable), and two guarantor signatures.",
+    ],
+    fields: [
+      { label: "Loan range", value: "50,000 – 5,000,000 Birr" },
+      { label: "Rate", value: "14% APR (standard)" },
+      { label: "Insurance", value: "Credit-life included" },
+      { label: "Prerequisites", value: "12 mo savings history" },
+    ],
+  },
+  {
+    slug: "beneficiary-designation",
+    kind: "form",
+    title: "Beneficiary Designation",
+    category: "Membership",
+    year: "2025",
+    updated: "Aug 22, 2025",
+    summary: "Nominate beneficiaries for your savings, shares, and credit-life insurance coverage. Recommended for every active member.",
+    fileSize: "95 KB",
+    body: [
+      "Beneficiary designations take precedence over other claims in the event of member death. Update your designation whenever your family circumstances change.",
+    ],
+    fields: [
+      { label: "Format", value: "PDF · notarization required" },
+      { label: "Review cadence", value: "On major life events" },
+    ],
+  },
+  {
+    slug: "sacco-monthly-report",
+    kind: "form",
+    title: "SACCO Monthly Report Template",
+    category: "Reporting",
+    year: "2026",
+    updated: "Jan 2, 2026",
+    summary: "Standard template every member SACCO uses to report membership, savings, and loan portfolio movement to the Union.",
+    fileSize: "60 KB",
+    body: [
+      "The report is due by the 10th of each month and feeds the Union's consolidated dashboards.",
+    ],
+    fields: [
+      { label: "Due", value: "10th of each month" },
+      { label: "Format", value: "Excel / Google Sheets" },
+    ],
+  },
+
+  {
+    slug: "cooperative-finance-2025-field-study",
+    kind: "publication",
+    title: "Cooperative Finance in Ethiopia: A 2025 Field Study",
+    category: "Research",
+    year: "2025",
+    updated: "Sep 12, 2025",
+    summary: "Field study across 12 SACCOs profiling how member savings translate into working-capital lending in the Rift Valley corridor.",
+    fileSize: "3.4 MB",
+    filePages: 78,
+    body: [
+      "The study visited 12 primary SACCOs and interviewed 240 individual members. Findings show that a 12-month savings history is the single strongest predictor of successful loan repayment, more so than collateral.",
+    ],
+    fields: [
+      { label: "Type", value: "Peer-reviewed research" },
+      { label: "SACCOs visited", value: "12" },
+      { label: "Members interviewed", value: "240" },
+    ],
+  },
+  {
+    slug: "financial-literacy-workbook",
+    kind: "publication",
+    title: "Financial Literacy Workbook for Members",
+    category: "Education",
+    year: "2024",
+    updated: "May 30, 2024",
+    summary: "Six-chapter workbook covering budgeting, saving, borrowing, insurance, business basics, and cooperative citizenship. Designed for member training sessions.",
+    fileSize: "2.1 MB",
+    filePages: 96,
+    body: [
+      "The workbook is used in every new-member orientation and in the Union's quarterly capacity-building sessions. It's freely reproducible for member education by any Ethiopian cooperative.",
+    ],
+    fields: [
+      { label: "Language", value: "Afaan Oromoo · Amharic" },
+      { label: "Chapters", value: "6" },
+      { label: "License", value: "Free to reproduce for member education" },
+    ],
+  },
+];
+
+// ---------- SACCO logos (optional) ----------
+// Real SACCO brand marks are managed as ACF `logo` on the `sacco` CPT.
+// When present, the marquee renders <img>; otherwise it falls back to a
+// premium monogram chip. Cast is safe — `logo` is optional at the type
+// level and each SACCO row is a superset.
+export type SaccoBrand = SaccoRow & { logo?: string };
+export const SACCO_BRANDS: SaccoBrand[] = SACCOS;
