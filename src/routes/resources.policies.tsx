@@ -17,7 +17,7 @@ export const Route = createFileRoute("/resources/policies")({
 });
 
 function PoliciesPage() {
-  const items = Route.useLoaderData();
+  const items = Route.useLoaderData() as SiteResource[];
   return (
     <PageShell>
       <PageHeader eyebrow="Policies" title="How the Union governs itself." intro="Bylaws, credit rules, and governance handbooks adopted by the General Assembly and reviewed on a fixed cadence." />

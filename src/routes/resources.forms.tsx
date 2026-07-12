@@ -17,7 +17,7 @@ export const Route = createFileRoute("/resources/forms")({
 });
 
 function FormsPage() {
-  const items = Route.useLoaderData();
+  const items = Route.useLoaderData() as SiteResource[];
   return (
     <PageShell>
       <PageHeader eyebrow="Forms & Templates" title="Standard forms for members and SACCOs." intro="Membership, loan, and reporting templates. Contact your SACCO for stamped or notarized copies." />

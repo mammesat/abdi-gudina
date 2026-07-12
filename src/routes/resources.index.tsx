@@ -34,7 +34,7 @@ const KIND_META: Record<ResourceKind | "all", { label: string; blurb: string }> 
 };
 
 function ResourcesIndex() {
-  const items = Route.useLoaderData();
+  const items = Route.useLoaderData() as SiteResource[];
   const [kind, setKind] = useState<ResourceKind | "all">("all");
   const [category, setCategory] = useState<string>("All");
 

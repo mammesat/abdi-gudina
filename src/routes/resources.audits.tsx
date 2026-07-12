@@ -17,7 +17,7 @@ export const Route = createFileRoute("/resources/audits")({
 });
 
 function AuditsPage() {
-  const items = Route.useLoaderData();
+  const items = Route.useLoaderData() as SiteResource[];
   return (
     <PageShell>
       <PageHeader eyebrow="Audits & Compliance" title="Every Birr, on the record." intro="Independent audits, internal control-committee reports, and regulatory compliance reviews — all published to members." />

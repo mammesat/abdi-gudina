@@ -51,7 +51,7 @@ const KIND_LABEL: Record<ResourceKind, string> = {
 };
 
 function ResourcePage() {
-  const { r } = Route.useLoaderData();
+  const { r } = Route.useLoaderData() as { r: SiteResource };
   return (
     <PageShell>
       <article className="border-b border-border">
