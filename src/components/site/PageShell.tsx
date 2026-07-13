@@ -1,16 +1,19 @@
 import type { ReactNode } from "react";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
+import { SkipLink } from "@/components/patterns";
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-accent/20">
+      <SkipLink />
       <SiteHeader />
-      <main>{children}</main>
+      <main id="main" tabIndex={-1}>{children}</main>
       <SiteFooter />
     </div>
   );
 }
+
 
 export function PageHeader({
   eyebrow,
