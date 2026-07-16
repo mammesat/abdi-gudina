@@ -26,8 +26,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Abdi Gudina Financial Cooperatives Union — Cooperative Finance for Ethiopia" },
       { name: "description", content: "Serving 50 SACCOs and 12,000+ members across Ethiopia since 2007. Savings, loans, credit-life insurance, and cooperative investment." },
-      { property: "og:title", content: "Abdi Gudina Financial Cooperatives Union" },
-      { property: "og:description", content: "Cooperative finance for Ethiopia — 50 SACCOs, 12,000+ members, 152M Birr disbursed." },
+      { property: "og:title", content: "Abdi Gudina Financial Cooperatives Union — Cooperative Finance for Ethiopia" },
+      { property: "og:description", content: "Serving 50 SACCOs and 12,000+ members across Ethiopia since 2007. Savings, loans, credit-life insurance, and cooperative investment." },
     ],
   }),
   component: HomePage,
