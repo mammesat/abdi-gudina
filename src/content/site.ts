@@ -792,3 +792,94 @@ export const RESOURCES: Resource[] = [
 // level and each SACCO row is a superset.
 export type SaccoBrand = SaccoRow & { logo?: string };
 export const SACCO_BRANDS: SaccoBrand[] = SACCOS;
+
+// ---------- Homepage content (WP → template parts / ACF options page) ----------
+// Every homepage section reads from this HOME object. In WordPress this maps
+// to a single `home` options page (ACF Options) whose groups line up 1:1 with
+// the section components in `src/components/home/sections.tsx`.
+export const HOME = {
+  hero: {
+    eyebrow: "Est. 2007 · Adama, Ethiopia",
+    titleLead: "Empowering communities through",
+    titleAccent: "cooperative",
+    titleTrail: "finance.",
+    intro:
+      "Since 2007, we have been building a resilient financial ecosystem in Ethiopia — serving 50 member SACCOs and over 12,000 members with transparent, member-owned capital.",
+    primaryCta: { label: "Explore Our Services", to: "/services" },
+    secondaryCta: { label: "Find Your SACCO", to: "/saccos" },
+  },
+  stats: [
+    { label: "Member Reach", value: "12,000+", hint: "Individual members across the Oromia Region", featured: true },
+    { label: "Affiliates", value: "50", hint: "SACCOs" },
+    { label: "Capital", value: "41.6M", hint: "Birr" },
+    { label: "Member Savings", value: "60.9M", hint: "Birr" },
+    { label: "Loan Portfolio", value: "152M", hint: "Birr disbursed" },
+  ],
+  about: {
+    eyebrow: "Our Origin",
+    titleLead: "Rooted in Adama.",
+    titleAccent: "Built by members.",
+    paragraphs: [
+      "Founded in 2007 by eight primary SACCOs in Adama, Abdi Gudina emerged from a simple conviction — that Ethiopian communities are better served when their savings, credit, and enterprise capital stay in their own hands.",
+      "Nineteen years later, we federate 50 SACCOs and 12,000+ members into a single, member-governed union — reinvesting every Birr into local livelihoods, women-led businesses, and smallholder agriculture across the Oromia Region.",
+    ],
+    facts: [
+      { label: "Founded", value: "2007" },
+      { label: "Governance", value: "Member-Owned" },
+      { label: "Region", value: "Oromia" },
+    ],
+    cta: { label: "Read our full story →", to: "/about" },
+  },
+  services: [
+    { n: "01", title: "Savings", to: "/services/savings", desc: "Secure, interest-bearing savings accounts designed for long-term cooperative growth for SACCOs and individual members." },
+    { n: "02", title: "Loans", to: "/services/loans", desc: "Affordable capital at a standardized 14% rate — from 50,000 up to 5,000,000 Birr to fuel member enterprises." },
+    { n: "03", title: "Credit Life", to: "/services/insurance", desc: "Comprehensive credit-life insurance protecting borrowers and their families through every stage of repayment." },
+    { n: "04", title: "Portfolio", to: "/services/investments", desc: "Diversified investment across grain trading, agro-chemicals, real estate, and vehicle rental for union-wide growth." },
+  ],
+  journey: [
+    { n: "01", title: "Find your SACCO", desc: "Locate a primary cooperative near you from our 50-strong network across Oromia." },
+    { n: "02", title: "Register as a member", desc: "Complete SACCO membership, buy shares, and open your first savings account." },
+    { n: "03", title: "Build savings history", desc: "Grow a consistent savings record — the foundation of your cooperative credit score." },
+    { n: "04", title: "Access capital & grow", desc: "Unlock working-capital loans at 14% with credit-life insurance included." },
+  ],
+  financials: [
+    { label: "Total Assets", value: "218.4M", unit: "Birr", delta: "+12.4%", direction: "up" as const },
+    { label: "Net Income", value: "9.7M", unit: "Birr", delta: "+8.1%", direction: "up" as const },
+    { label: "Operating Ratio", value: "84.2", unit: "%", delta: "−1.6 pts", direction: "down" as const },
+    { label: "Loan Recovery", value: "97.3", unit: "%", delta: "+0.9 pts", direction: "up" as const },
+  ],
+  managerMessage: {
+    name: "Ato Dereje Bekele",
+    role: "General Manager",
+    initials: "DB",
+    quote: "Every Birr we hold belongs to a member.",
+    paragraphs: [
+      "When members entrust us with their savings, they entrust us with their family's future. Our job — mine, the board's, and every SACCO leader's — is to steward that trust with discipline, transparency, and courage.",
+      "In 2026, we're doubling down on what has always worked: member-first governance, audited books, and capital that stays inside our communities.",
+    ],
+    cta: { label: "Meet the leadership team →", to: "/about/governance" },
+  },
+  faqs: [
+    { q: "What is a Financial Cooperative Union?", a: "It's a second-level cooperative owned by SACCOs rather than by individuals. Individuals join a SACCO; SACCOs join the Union. The Union then serves its member SACCOs with wholesale finance, shared services, training, and advocacy." },
+    { q: "How is AG Union different from a bank?", a: "We are member-owned. Every SACCO that joins the Union holds equal governance rights, and every Birr of surplus is either reinvested in member services or distributed back as patronage — no outside shareholders." },
+    { q: "What services do you provide to member SACCOs?", a: "Liquidity loans, pooled investment returns, credit-life insurance, capacity training for boards and staff, shared accounting and audit support, and representation before regulators." },
+    { q: "Can an individual join the Union directly?", a: "No. Individuals join a primary SACCO in their community. That SACCO — once it meets the affiliation standards — joins Abdi Gudina Union on their behalf." },
+    { q: "How can an existing SACCO affiliate with AG Union?", a: "Contact the Union office in Adama for the affiliation packet. The process involves a governance review, financial due diligence, and a General Assembly vote — typically completed within one quarter." },
+    { q: "Are your accounts audited?", a: "Yes. Annual statements are audited by an independent Ethiopian firm and adopted by the General Assembly. Recent audited reports are available under Resources → Annual Reports." },
+  ],
+  cta: {
+    eyebrow: "Join the Union",
+    title: "Ready to grow together?",
+    intro: "Discover how cooperative membership can transform your financial future — for your SACCO and your community.",
+    primary: { label: "Find a SACCO near you", to: "/saccos" },
+    secondary: { label: "Learn about membership", to: "/saccos/benefits" },
+  },
+  awards: [
+    { year: "2024", title: "Best Cooperative Union", body: "Oromia Cooperative Bureau" },
+    { year: "2023", title: "Excellence in Governance", body: "Federal Cooperative Agency" },
+    { year: "2022", title: "Women's Financial Inclusion", body: "ICA Africa" },
+    { year: "2021", title: "Rural Finance Innovation", body: "National Bank of Ethiopia" },
+    { year: "2020", title: "Community Impact Award", body: "Adama City Administration" },
+  ],
+};
+
